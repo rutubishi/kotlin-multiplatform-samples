@@ -24,6 +24,12 @@ kotlin {
                     enabled.set(true)
                 }
             }
+            testTask {
+                useKarma {
+                    useFirefox()
+                    useChromium()
+                }
+            }
         }
     }
 }

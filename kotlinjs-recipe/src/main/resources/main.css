@@ -1,0 +1,23 @@
+.btn {
+    border-radius: 20px;
+    padding: 10px;
+    color: orangered;
+    font-weight: bold;
+}
+
+#login-btn {
+    background: transparent none;
+}
+
+#signup-btn {
+    background-color: transparent;
+    border-width: 1px ;
+    border-color: orangered;
+}
+
+#navigation-bar {
+    display: inline;
+    justify-content: space-between;
+    flex: content;
+    flex-direction: row;
+}
