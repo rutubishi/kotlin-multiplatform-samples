@@ -1,0 +1,129 @@
+[versions]
+# main
+activity-compose = "1.7.2"
+lottie-compose = "6.0.0"
+windowClassSizesCompose = "1.1.0"
+navigation-compose = "2.5.3"
+constraintlayout-compose = "1.0.1"
+appcompat = "1.5.1"
+core-ktx = "1.9.0"
+ui-tooling-preview = "1.4.2"
+coil-compose= "2.4.0"
+kamel-image = "0.4.0"
+koin = "3.4.0"
+apollo-client = "3.8.2"
+coroutines-ktx = "1.7.1"
+# test
+test-compose = "1.4.3"
+faker = "1.0.2"
+
+# debug
+ui-test-manifest = "1.4.3"
+ui-tooling = "1.4.2"
+
+# android app config
+minSdk = "24"
+targetSdk = "33"
+versionCode = "1"
+versionName = "1.0-SNAPSHOT"
+testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+# project libs
+shared = ":common"
+android = ":android"
+desktop = ":desktop"
+org-jetbrains-kotlin-jvm = "1.8.0"
+agp = "7.3.0"
+org-jetbrains-kotlin-android = "1.8.0"
+junit = "1.1.5"
+espresso-core = "3.5.1"
+material = "1.9.0"
+
+## SERVER
+kgraphql= "0.19.0"
+ktor = "2.3.0"
+kotlin-test = "1.8.21"
+logback = "1.2.11"
+postgres="42.5.1"
+h2="2.1.214"
+exposed="0.41.1"
+eh-cache="3.10.8"
+hikaricp="5.0.1"
+bcrypt="0.4.0"
+bcrypt-favre="0.10.2"
+
+[libraries]
+# dev
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+windowClassSizesCompose = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "windowClassSizesCompose" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout-compose" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui-tooling-preview" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+kamel-image = { module = "com.alialbaali.kamel:kamel-image", version.ref = "kamel-image" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo-client" }
+coroutines-ktx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-ktx" }
+
+# test
+test-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "test-compose" }
+junit4 = { module = "junit:junit", version = "4.13.2" }
+faker = { module = "io.github.serpro69:kotlin-faker", version.ref = "faker" }
+
+# debug
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "ui-test-manifest" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui-tooling" }
+junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+## SERVER
+kgraphql = { module = "com.apurebase:kgraphql", version.ref = "kgraphql" }
+kgraphql-ktor = { module = "com.apurebase:kgraphql-ktor", version.ref = "kgraphql" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-auth = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
+ktor-server-auth-jwt = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
+ktor-server-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor" }
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
+eh-cache = { module = "org.ehcache:ehcache", version.ref = "eh-cache" }
+ktor-server-test = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-test" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+bcrypt = { module = "com.mindrot:jbcrypt", version.ref = "bcrypt" }
+bcrypt-favre = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt-favre" }
+
+[bundles]
+dev = [ "activity-compose", "ui-tooling-preview", "koin-android",
+    "koin-androidx-navigation", "koin-androidx-compose", "navigation-compose",
+    "windowClassSizesCompose", "lottie-compose" ]
+test = [ "test-compose" ]
+debug = [ "ui-test-manifest", "ui-tooling" ]
+server-main = [ "kgraphql", "kgraphql-ktor", "ktor-server-netty", "ktor-server-core", "logback",
+    "ktor-server-content-negotiation", "ktor-server-auth", "ktor-server-auth-jwt", "ktor-server-serialization", "postgres", "h2",
+    "exposed-core", "exposed-jdbc", "exposed-dao", "eh-cache", "hikaricp", "koin-ktor", "bcrypt-favre", "ktor-server-yaml",
+    "ktor-server-status-pages"]
+server-test = [ "ktor-server-test", "kotlin-test-junit", "koin-test" ]
+
+[plugins]
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+apollo-client-plugin = { id = "com.apollographql.apollo3", version.ref = "apollo-client" }
+
