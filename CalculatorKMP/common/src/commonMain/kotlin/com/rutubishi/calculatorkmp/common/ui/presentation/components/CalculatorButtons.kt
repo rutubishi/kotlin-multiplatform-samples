@@ -50,10 +50,10 @@ fun FunctionKey(
         }else{
             content()
         }
-
     }
 
 }
+
 
 @Composable
 fun NumberKey(
@@ -77,13 +77,15 @@ fun NumberKey(
     }
 }
 
+
 @Composable
 fun SubmitCalculation(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClick,
         shape = RoundedCornerShape(5.dp)
     ){
         Text(text = "=", style = MaterialTheme.typography.displayMedium)

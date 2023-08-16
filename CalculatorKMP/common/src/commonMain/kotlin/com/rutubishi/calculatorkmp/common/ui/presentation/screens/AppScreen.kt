@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -34,20 +35,47 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.rutubishi.calculatorkmp.common.data.CalculatorLogic
 import com.rutubishi.calculatorkmp.common.ui.presentation.components.FunctionKey
 import com.rutubishi.calculatorkmp.common.ui.presentation.components.KeyLayout
 import com.rutubishi.calculatorkmp.common.ui.presentation.components.NumberKey
 import com.rutubishi.calculatorkmp.common.ui.presentation.components.SubmitCalculation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 @ExperimentalMaterial3Api
 fun AppScreen(
     modifier: Modifier = Modifier,
+    opScope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ){
-    var displayOut by rememberSaveable { mutableStateOf("") }
+    val currentInput = CalculatorLogic.calculatorInput.collectAsState()
+    val currentSolution = CalculatorLogic.solution.collectAsState()
+    val stack = CalculatorLogic.inputStack
+
+    fun setInput(value: String) = opScope.launch {
+        stack.add(value.first())
+        CalculatorLogic.setInput("${ currentInput.value ?: "" }$value")
+    }
+
+    fun clearInput() = opScope.launch {
+        CalculatorLogic.clearInput()
+    }
+
+    fun deleteLast() = opScope.launch {
+        CalculatorLogic.setInput(
+            currentInput.value?.take(currentInput.value!!.length - 1) ?: ""
+        )
+    }
+
+    fun solve() = opScope.launch {
+        CalculatorLogic.solve()
+    }
+
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.surface)
             .padding(top = 8.dp)
@@ -58,6 +86,20 @@ fun AppScreen(
             contentAlignment = Alignment.BottomEnd
         ) {
 
+            Text(
+                text = currentSolution.value ?: "",
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .height(75.dp)
+                    .fillMaxWidth()
+                    .padding(end = 8.dp),
+                style = MaterialTheme.typography.displayMedium.copy(
+                    textAlign = TextAlign.End,
+                    color = MaterialTheme.colorScheme.onSurface
+                ),
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
             TextField(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -65,14 +107,15 @@ fun AppScreen(
                 textStyle = MaterialTheme.typography.displayLarge.copy(
                     textAlign = TextAlign.End
                 ),
-                value = displayOut,
-                onValueChange = { displayOut = it },
+                value = currentInput.value ?: "",
+                onValueChange = { },
                 colors = TextFieldDefaults.textFieldColors(
                     MaterialTheme.colorScheme.onSurfaceVariant,
                     containerColor = MaterialTheme.colorScheme.surface,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent
-                )
+                ),
+                singleLine = true
             )
 
         }
@@ -98,17 +141,17 @@ fun AppScreen(
                 .padding(8.dp)) {
 
                 KeyLayout {
-                    FunctionKey(onClick = {}, value = 'C')
+                    FunctionKey(onClick = { clearInput() }, value = 'C')
                     FunctionKey(onClick = {}, value = '%')
-                    FunctionKey(onClick = {}, value = '/')
-                    FunctionKey(onClick = {})
+                    FunctionKey(onClick = { setInput("/") }, value = '/')
+                    FunctionKey(onClick = { setInput("+") })
                 }
 
                 KeyLayout {
-                    NumberKey(onClick = {}, value = '9')
-                    NumberKey(onClick = {}, value = '8')
-                    NumberKey(onClick = {}, value = '7')
-                    FunctionKey(onClick = {}, content = {
+                    NumberKey(onClick = { setInput("9") }, value = '9')
+                    NumberKey(onClick = { setInput("8") }, value = '8')
+                    NumberKey(onClick = { setInput("7") }, value = '7')
+                    FunctionKey(onClick = { setInput("x") }, content = {
                         Icon(
                             imageVector = Icons.Filled.Close,
                             contentDescription = null
@@ -117,10 +160,10 @@ fun AppScreen(
                 }
 
                 KeyLayout {
-                    NumberKey(onClick = {}, value = '6')
-                    NumberKey(onClick = {}, value = '5')
-                    NumberKey(onClick = {}, value = '4')
-                    FunctionKey(onClick = {}, content = {
+                    NumberKey(onClick = { setInput("6") }, value = '6')
+                    NumberKey(onClick = { setInput("5") }, value = '5')
+                    NumberKey(onClick = { setInput("4") }, value = '4')
+                    FunctionKey(onClick = { setInput("-") }, content = {
                         Icon(
                             imageVector = Icons.Filled.Remove,
                             contentDescription = null
@@ -129,10 +172,10 @@ fun AppScreen(
                 }
 
                 KeyLayout {
-                    NumberKey(onClick = {}, value = '3')
-                    NumberKey(onClick = {}, value = '2')
-                    NumberKey(onClick = {}, value = '1')
-                    FunctionKey(onClick = {}, content = {
+                    NumberKey(onClick = { setInput("3") }, value = '3')
+                    NumberKey(onClick = { setInput("2") }, value = '2')
+                    NumberKey(onClick = { setInput("1") }, value = '1')
+                    FunctionKey(onClick = ::deleteLast, content = {
                         Icon(
                             imageVector = Icons.Filled.Backspace,
                             contentDescription = null
@@ -143,9 +186,9 @@ fun AppScreen(
                 Row(
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
-                    NumberKey(onClick = {}, value = '0', modifier = Modifier.weight(1f))
-                    NumberKey(onClick = {}, value = '.', modifier = Modifier.weight(1f))
-                    SubmitCalculation(modifier = Modifier.weight(2f))
+                    NumberKey(onClick = { setInput("0") }, value = '0', modifier = Modifier.weight(1f))
+                    NumberKey(onClick = { setInput(".") }, value = '.', modifier = Modifier.weight(1f))
+                    SubmitCalculation(modifier = Modifier.weight(2f)){ solve() }
                 }
 
             }
