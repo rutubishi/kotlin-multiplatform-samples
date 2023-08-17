@@ -2,6 +2,7 @@
 # main
 activity-compose = "1.7.2"
 lottie-compose = "6.0.0"
+skikoLinuxx64 = "0.7.69"
 windowClassSizesCompose = "1.1.0"
 navigation-compose = "2.5.3"
 constraintlayout-compose = "1.0.1"
@@ -13,6 +14,7 @@ kamel-image = "0.4.0"
 koin = "3.4.0"
 apollo-client = "3.8.2"
 coroutines-ktx = "1.7.1"
+skiko-linux = "0.7.69"
 # test
 test-compose = "1.4.3"
 faker = "1.0.2"
@@ -42,7 +44,7 @@ material = "1.9.0"
 ## SERVER
 kgraphql= "0.19.0"
 ktor = "2.3.0"
-kotlin-test = "1.8.21"
+kotlin-test = "1.9.0"
 logback = "1.2.11"
 postgres="42.5.1"
 h2="2.1.214"
@@ -55,6 +57,7 @@ bcrypt-favre="0.10.2"
 [libraries]
 # dev
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+skiko-linuxx64 = { module = "org.jetbrains.skiko:skiko-linuxx64", version.ref = "skikoLinuxx64" }
 windowClassSizesCompose = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "windowClassSizesCompose" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
@@ -72,7 +75,7 @@ koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo-client" }
 coroutines-ktx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-ktx" }
-
+skiko-linux = { module = "org.jetbrains.skiko:skiko-linuxx64", version.ref = "skiko-linux" }
 # test
 test-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "test-compose" }
 junit4 = { module = "junit:junit", version = "4.13.2" }

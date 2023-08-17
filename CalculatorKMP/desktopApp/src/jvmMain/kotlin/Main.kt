@@ -13,7 +13,6 @@ import com.rutubishi.calculatorkmp.common.ui.theme.AppTheme
 @ExperimentalMaterial3Api
 fun main() = application {
     Window(
-        icon = painterResource("calculator.png"),
         title = "CalculatorKMP",
         onCloseRequest = ::exitApplication,
         state = WindowState(
