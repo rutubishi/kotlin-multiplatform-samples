@@ -61,6 +61,8 @@ kotlin {
         binaries.executable()
     }
 
+
+    @OptIn(ExperimentalComposeLibrary::class)
     sourceSets {
         val jsWasmMain by creating {
             dependencies {
@@ -69,7 +71,6 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
             }
         }
