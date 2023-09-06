@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import presentation.theme.general_padding
+import presentation.theme.half_padding
 
 @Composable
 fun AppNavBar(
@@ -21,7 +22,7 @@ fun AppNavBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = general_padding),
+            .padding(horizontal = general_padding, vertical = half_padding),
         horizontalArrangement = if(isWideScreen) Arrangement.Start else Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ){
