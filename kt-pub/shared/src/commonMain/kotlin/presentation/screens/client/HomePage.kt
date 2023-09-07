@@ -1,24 +1,16 @@
 package presentation.screens.client
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DesktopMac
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.filled.Newspaper
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -166,11 +158,77 @@ fun JobsRecentSection(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(vertical = half_padding),
+            horizontalArrangement = Arrangement
+                .spacedBy(half_padding)
         ) {
 
-            items(arrayListOf("hello")) {
+            items((1..3).toList()) {
                 JobTile()
             }
+
+        }
+
+    }
+
+}
+
+@Composable
+fun KotlinNewsBanner(
+    modifier: Modifier = Modifier,
+    title: String = ""
+) {
+
+    ElevatedCard(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = half_padding),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        )
+    ){
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = general_padding),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Column(
+                modifier = Modifier
+                    .weight(2f),
+                verticalArrangement = Arrangement.Center
+            ) {
+
+                Text(
+                    modifier = Modifier.padding(top = general_padding),
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold
+                )
+
+                ElevatedButton(
+                    modifier = Modifier
+                        .padding(top = half_padding, bottom = general_padding),
+                    onClick =  {
+
+                    },
+                ){
+                    Text(
+                        text = "Learn More",
+                    )
+                }
+
+            }
+
+            Icon(
+                imageVector = Icons.Filled.Newspaper,
+                contentDescription = null,
+                modifier = Modifier
+                    .weight(1f)
+                    .size(standard_icon_size)
+            )
 
         }
 
@@ -189,6 +247,9 @@ fun HomePage(
     Column(
         modifier = modifier
     ) {
+        KotlinNewsBanner(
+            title = "The K2 compiler is now ready!"
+        )
         JobStatsSection()
         JobsRecentSection()
     }
