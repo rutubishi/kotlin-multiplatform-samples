@@ -1,10 +1,12 @@
 package presentation.screens.client
 
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DesktopMac
 import androidx.compose.material.icons.filled.Newspaper
@@ -58,7 +60,10 @@ fun HomeAppBar(
 
 @Composable
 fun JobStatsSection() {
-    Column {
+    Column(
+        modifier = Modifier
+            .padding(top = half_padding)
+    ) {
         /**
          * Section header
          * */
@@ -147,7 +152,7 @@ fun JobsRecentSection(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = half_padding)
+            .padding(vertical = general_padding)
     ) {
 
         AppHeader(
@@ -246,6 +251,7 @@ fun HomePage(
 
     Column(
         modifier = modifier
+            .verticalScroll(state = rememberScrollState())
     ) {
         KotlinNewsBanner(
             title = "The K2 compiler is now ready!"

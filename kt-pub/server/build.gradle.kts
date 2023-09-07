@@ -1,11 +1,37 @@
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
-
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("multiplatform")
     id("io.ktor.plugin") version "2.3.4"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+}
+
+kotlin {
+    jvm()
+    sourceSets {
+        val jvmMain by getting {
+            dependencies {
+                implementation(project(":shared"))
+                implementation("io.ktor:ktor-server-core-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-auth-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-auth-jwt-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-host-common-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-status-pages-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-cors-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-swagger-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-openapi:2.3.4")
+                implementation("io.ktor:ktor-server-content-negotiation-jvm:2.3.4")
+                implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:2.3.4")
+                implementation("io.ktor:ktor-server-netty-jvm:2.3.4")
+                implementation("ch.qos.logback:logback-classic:1.4.11")
+                implementation("io.ktor:ktor-server-config-yaml:2.3.4")
+             }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation("io.ktor:ktor-server-tests-jvm:2.3.4")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.0")
+            }
+        }
+    }
 }
 
 group = "com.rutubishi"
@@ -18,24 +44,5 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
-repositories {
-    mavenCentral()
-}
 
-dependencies {
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-auth-jvm")
-    implementation("io.ktor:ktor-server-auth-jwt-jvm")
-    implementation("io.ktor:ktor-server-host-common-jvm")
-    implementation("io.ktor:ktor-server-status-pages-jvm")
-    implementation("io.ktor:ktor-server-cors-jvm")
-    implementation("io.ktor:ktor-server-swagger-jvm")
-    implementation("io.ktor:ktor-server-openapi")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
-    implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-config-yaml:2.3.4")
-    testImplementation("io.ktor:ktor-server-tests-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-}
+
