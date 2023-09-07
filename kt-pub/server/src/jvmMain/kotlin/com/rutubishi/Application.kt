@@ -8,6 +8,8 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    configureDI()
+    configureDB()
     configureSecurity()
     configureHTTP()
     configureSerialization()

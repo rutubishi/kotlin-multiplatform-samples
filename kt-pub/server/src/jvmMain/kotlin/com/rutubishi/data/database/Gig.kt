@@ -4,12 +4,10 @@ import com.rutubishi.data.database.AppDbFactory.dbQuery
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import org.jetbrains.exposed.dao.id.IdTable
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.kotlin.datetime.Date
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
-import java.util.Date
+import java.util.*
 
 data class Gig(
     val id: Long = 0L,

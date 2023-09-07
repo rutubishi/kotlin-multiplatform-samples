@@ -5,6 +5,7 @@ services:
     image: postgres:13-alpine
     restart: on-failure
     environment:
+      POSTGRES_DB: kt-pub
       POSTGRES_USER: kt-pub
       POSTGRES_PASSWORD: change_password
       PGDATA: /data/postgres

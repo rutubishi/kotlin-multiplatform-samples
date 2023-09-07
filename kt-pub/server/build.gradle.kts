@@ -11,6 +11,7 @@ kotlin {
             dependencies {
                 implementation(project(":shared"))
                 implementation(libs.bundles.ktor.server)
+                api(libs.bundles.shared)
              }
         }
         val jvmTest by getting {
