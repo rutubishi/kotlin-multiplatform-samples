@@ -11,7 +11,7 @@ data class Employer(
     val logo: String,
     val description: String,
     val webPage: String,
-    val industry: String
+    val industry: String,
 )
 
 object Employers : LongIdTable("employers"){
@@ -40,26 +40,26 @@ class EmployerDAOImpl : EmployerDAO {
             it[webPage] = employer.webPage
             it[industry] = employer.industry
         }
-        statement.resultedValues?.singleOrNull()?.let(::rowToArticle)
+        statement.resultedValues?.singleOrNull()?.let(::rowToEmployer)
     }
 
     override suspend fun getEmployer(id: Long): Employer? = dbQuery {
         Employers
             .select{ Employers.id eq id }
-            .map(::rowToArticle)
+            .map(::rowToEmployer)
             .singleOrNull()
     }
 
     override suspend fun getEmployerByIndustry(industry: String): List<Employer> = dbQuery {
         Employers
             .select { Employers.industry like industry }
-            .map(::rowToArticle)
+            .map(::rowToEmployer)
     }
 
     override suspend fun searchEmployer(searchTerm: String): List<Employer> = dbQuery {
         Employers
             .select { Employers.industry like searchTerm or (Employers.title like searchTerm) or (Employers.description like searchTerm) }
-            .map(::rowToArticle)
+            .map(::rowToEmployer)
     }
 
     override suspend fun editEmployer(employer: Employer): Employer?  = dbQuery {
@@ -78,7 +78,7 @@ class EmployerDAOImpl : EmployerDAO {
         true
     }
 
-    private fun rowToArticle(row: ResultRow) = Employer(
+    private fun rowToEmployer(row: ResultRow) = Employer(
         id = row[Employers.id].value,
         title = row[Employers.title],
         logo = row[Employers.logo],
