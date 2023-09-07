@@ -1,0 +1,31 @@
+#versions
+[versions]
+kotlin="1.9.0"
+ktor="2.3.4"
+logback-classic="1.4.11"
+
+[libraries]
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-server-auth-jvm = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
+ktor-server-auth-jwt-jvm = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
+ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-content-negotiation-jvm = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-core-jvm = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-cors-jvm = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
+ktor-server-host-common-jvm = { module = "io.ktor:ktor-server-host-common-jvm", version.ref = "ktor" }
+ktor-server-netty-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-openapi = { module = "io.ktor:ktor-server-openapi", version.ref = "ktor" }
+ktor-server-status-pages-jvm = { module = "io.ktor:ktor-server-status-pages-jvm", version.ref = "ktor" }
+ktor-server-swagger-jvm = { module = "io.ktor:ktor-server-swagger-jvm", version.ref = "ktor" }
+ktor-server-tests-jvm = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
+
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+
+[bundles]
+ktor-server = ["ktor-serialization-kotlinx-json-jvm", "ktor-server-auth-jvm", "ktor-server-auth-jwt-jvm",
+    "ktor-server-config-yaml", "ktor-server-content-negotiation-jvm", "ktor-server-core-jvm", "ktor-server-cors-jvm",
+    "ktor-server-host-common-jvm", "ktor-server-netty-jvm", "ktor-server-openapi", "ktor-server-status-pages-jvm",
+    "ktor-server-swagger-jvm", "logback-classic"]
+ktor-server-tests =["ktor-server-tests-jvm", "kotlin-test-junit"]
