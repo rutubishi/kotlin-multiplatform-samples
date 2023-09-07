@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DesktopMac
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -145,6 +146,7 @@ fun JobStatsSection() {
 }
 
 @Composable
+@ExperimentalMaterial3Api
 fun JobsRecentSection(
     isWideScreen: Boolean = false,
     modifier: Modifier = Modifier
@@ -178,6 +180,7 @@ fun JobsRecentSection(
 
 
 @Composable
+@ExperimentalMaterial3Api
 fun HomePage(
     isWideScreen: Boolean = false,
     modifier: Modifier = Modifier
