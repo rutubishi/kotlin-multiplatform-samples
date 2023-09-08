@@ -12,6 +12,7 @@ hikari="5.0.1"
 ehcache="3.10.8"
 koin="3.4.3"
 postgres="42.5.1"
+flyway="6.5.2"
 
 
 [libraries]
@@ -40,6 +41,7 @@ exposed-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", v
 h2 = { module = "com.h2database:h2", version.ref ="h2" }
 ehcache = { module = "org.ehcache:ehcache", version.ref="ehcache" }
 postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
 
 #clients
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
@@ -58,7 +60,7 @@ ktor-server = ["ktor-serialization-kotlinx-json-jvm", "ktor-server-auth-jvm", "k
     "ktor-server-config-yaml", "ktor-server-content-negotiation-jvm", "ktor-server-core-jvm", "ktor-server-cors-jvm",
     "ktor-server-host-common-jvm", "ktor-server-netty-jvm", "ktor-server-openapi", "ktor-server-status-pages-jvm",
     "ktor-server-swagger-jvm", "logback-classic", "exposed-core", "exposed-dao", "exposed-jdbc", "h2", "hikari", "ehcache",
-    "exposed-datetime", "postgres"]
+    "exposed-datetime", "postgres", "flyway"]
 ktor-server-tests =["ktor-server-tests-jvm", "kotlin-test-junit"]
 shared = ["koin-core", "koin-ktor", "koin-logger"]
 

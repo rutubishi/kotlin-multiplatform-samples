@@ -1,0 +1,1 @@
+ALTER TABLE gigs ADD pay_range VARCHAR(255) NOT NULL default '1.5-2k'

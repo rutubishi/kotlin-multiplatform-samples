@@ -2,6 +2,7 @@ package com.rutubishi.data.database
 
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
+import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
@@ -26,6 +27,9 @@ object AppDbFactory {
             addLogger(StdOutSqlLogger)
             SchemaUtils.create(*SCHEMAS)
         }
+        val flyway = Flyway.configure().dataSource(dataSource).load()
+        flyway.baseline()
+        flyway.migrate()
     }
 
     suspend fun <T> dbQuery(execution: suspend () -> T) : T =

@@ -1,6 +1,6 @@
 # run database
 build-db:
-	cd database && docker compose up --build -d --remove-orphans
+	docker compose run db
 
 db-logs:
-	cd database && docker compose logs --follow
+	docker compose logs --follow
