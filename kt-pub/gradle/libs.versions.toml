@@ -3,6 +3,7 @@ activity-compose="1.7.2"
 appcompat="1.6.1"
 core-ktx="1.12.0"
 kotlin="1.9.0"
+kotlinx-serialization-json="1.5.1"
 ktor="2.3.4"
 logback-classic="1.4.11"
 exposed="0.41.1"
@@ -16,6 +17,7 @@ postgres="42.5.1"
 [libraries]
 #server
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
 ktor-server-auth-jvm = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
 ktor-server-auth-jwt-jvm = { module = "io.ktor:ktor-server-auth-jwt-jvm", version.ref = "ktor" }
@@ -59,5 +61,6 @@ ktor-server = ["ktor-serialization-kotlinx-json-jvm", "ktor-server-auth-jvm", "k
     "exposed-datetime", "postgres"]
 ktor-server-tests =["ktor-server-tests-jvm", "kotlin-test-junit"]
 shared = ["koin-core", "koin-ktor", "koin-logger"]
+
 
 [plugins]

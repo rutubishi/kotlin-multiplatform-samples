@@ -1,0 +1,48 @@
+package com.rutubishi.data.repository
+
+import com.rutubishi.data.database.*
+import kotlinx.datetime.LocalDate
+import network.GigRequest
+import java.time.LocalDateTime
+import java.util.Date
+
+interface GigRepository {
+    suspend fun showGigs(): List<Gig>
+    suspend fun searchGig(searchTerm: String): List<Gig>
+    suspend fun addGig(gigRequest: GigRequest): Gig?
+}
+
+class GigRepoImpl(
+    private val gigDAO: GigDAO,
+    private val employerDAO: EmployerDAO
+) : GigRepository {
+    override suspend fun showGigs(): List<Gig> = gigDAO.showGigs()
+
+    override suspend fun searchGig(searchTerm: String): List<Gig> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun addGig(gigRequest: GigRequest): Gig? {
+        val employer = employerDAO.getEmployer(gigRequest.employerId)
+        return if(employer == null)
+            null
+        else
+          with(gigRequest){
+                val gig = Gig(
+                    title = title,
+                    description = description,
+                    requirements = requirements,
+                    location = location,
+                    benefits = benefits,
+                    roleType = RoleType.valueOf(roleType),
+                    locType = LocType.valueOf(locType),
+                    contractType = ContractType.valueOf(contractType),
+                    datePosted = LocalDate.parse(Date().toString()),
+                    employer = employer
+                )
+              gigDAO.addGig(gig)
+            }
+
+        }
+    }
+}

@@ -1,5 +1,6 @@
 package com.rutubishi.plugins
 
+import com.rutubishi.router.gigRouter
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.statuspages.*
@@ -12,9 +13,7 @@ fun Application.configureRouting() {
             call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
         }
     }
-    routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-    }
+
+    gigRouter()
+
 }
