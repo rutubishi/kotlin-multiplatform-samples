@@ -25,12 +25,13 @@ data class Gig(
     val locType: LocType,
     val contractType: ContractType,
     val datePosted: LocalDateTime,
-    val employer: Employer
+    val employer: Employer,
+    val salaryRange: String,
 ){
     fun toDto() = GigResponse(
         id, title, description, requirements, location, benefits,
         roleType.name, locType.name, contractType.name, employer.id,
-        employer.title, employer.logo, datePosted.toString()
+        employer.title, employer.logo, datePosted.toString(), salaryRange
     )
 }
 
@@ -61,6 +62,7 @@ object Gigs : LongIdTable("gigs"){
     val contractType = enumeration<ContractType>("contract_type")
     val datePosted = datetime("date_posted")
     val employer = reference("employer", Employers.id, onDelete = ReferenceOption.CASCADE)
+    val salaryRange = text("pay_range")
 }
 
 interface GigDAO {
@@ -84,6 +86,7 @@ class GigDAOImpl(
             it[contractType] = gig.contractType
             it[datePosted] = gig.datePosted
             it[employer] = gig.employer.id
+            it[salaryRange] = gig.salaryRange
         }
         statement.resultedValues?.singleOrNull()?.let(::rowToGig)
     }
@@ -116,7 +119,8 @@ class GigDAOImpl(
             locType = row[Gigs.locType],
             contractType = row[Gigs.contractType],
             datePosted = row[Gigs.datePosted],
-            employer = employer
+            employer = employer,
+            salaryRange = row[Gigs.salaryRange]
         )
     }
 }

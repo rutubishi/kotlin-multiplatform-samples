@@ -40,7 +40,8 @@ class GigRepoImpl(
                     locType = LocType.valueOf(locType),
                     contractType = ContractType.valueOf(contractType),
                     datePosted = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
-                    employer = employer
+                    employer = employer,
+                    salaryRange = salaryRange
                 )
               gigDAO.addGig(gig)
             }

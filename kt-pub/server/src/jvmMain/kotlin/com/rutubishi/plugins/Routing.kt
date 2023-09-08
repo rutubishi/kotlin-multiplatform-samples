@@ -4,11 +4,14 @@ import com.rutubishi.data.repository.EmployerRepository
 import com.rutubishi.data.repository.GigRepository
 import com.rutubishi.router.employerRouter
 import com.rutubishi.router.gigRouter
+import data.network.AppResponse
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.jetbrains.exposed.exceptions.ExposedSQLException
+import org.jetbrains.exposed.sql.SqlExpressionBuilder
 import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
@@ -18,7 +21,10 @@ fun Application.configureRouting() {
 
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
+            call.respond(AppResponse(code = HttpStatusCode.InternalServerError.value, status = "Failed", body = "Cause: ${cause.message}"))
+        }
+        exception<ExposedSQLException> { call, cause  ->
+            call.respond(AppResponse(code = HttpStatusCode.UnprocessableEntity.value, status = "Input Error", body = "Cause: ${cause.message}"))
         }
     }
 

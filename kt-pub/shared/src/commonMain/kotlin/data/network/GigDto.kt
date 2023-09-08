@@ -14,7 +14,8 @@ data class GigRequest(
     val roleType: String,
     val locType: String,
     val contractType: String,
-    val employerId: Long
+    val employerId: Long,
+    val salaryRange: String
 )
 
 @Serializable
@@ -31,5 +32,6 @@ data class GigResponse(
     val employerId: Long,
     val employer: String,
     val employerLogo: String,
-    val datePosted: String
+    val datePosted: String,
+    val salaryRange: String,
 )
