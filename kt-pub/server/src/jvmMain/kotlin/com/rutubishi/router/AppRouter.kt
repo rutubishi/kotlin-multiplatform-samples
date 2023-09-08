@@ -11,5 +11,11 @@ object AppRouter {
     val showGigsLatest = "/gig/latest"
     val showAllGigs = "/gig/all"
 
+    /**
+    * Employer Routes
+     * */
+    val createEmployer = "/employer/add"
+    val getEmployer = "/employer/{id}"
+    val showEmployers = "/employer/all"
 
 }

@@ -1,9 +1,14 @@
 package com.rutubishi.data.database
 
 import com.rutubishi.data.database.AppDbFactory.dbQuery
+import data.network.EmployerDto
+import data.network.GigResponse
 import kotlinx.coroutines.runBlocking
+import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
@@ -19,9 +24,15 @@ data class Gig(
     val roleType: RoleType,
     val locType: LocType,
     val contractType: ContractType,
-    val datePosted: LocalDate,
+    val datePosted: LocalDateTime,
     val employer: Employer
-)
+){
+    fun toDto() = GigResponse(
+        id, title, description, requirements, location, benefits,
+        roleType.name, locType.name, contractType.name, employer.id,
+        employer.title, employer.logo, datePosted.toString()
+    )
+}
 
 enum class LocType(name: String) {
     HYBRID("Hybrid"),
@@ -71,12 +82,11 @@ class GigDAOImpl(
             it[roleType] = gig.roleType
             it[locType] = gig.locType
             it[contractType] = gig.contractType
-            it[datePosted] = LocalDateTime.parse(Date().toString())
+            it[datePosted] = gig.datePosted
             it[employer] = gig.employer.id
         }
         statement.resultedValues?.singleOrNull()?.let(::rowToGig)
     }
-
     override suspend fun showGigs(count: Int?): List<Gig> = dbQuery {
         if (count == null)
             Gigs
@@ -105,7 +115,7 @@ class GigDAOImpl(
             roleType = row[Gigs.roleType],
             locType = row[Gigs.locType],
             contractType = row[Gigs.contractType],
-            datePosted = row[Gigs.datePosted].date,
+            datePosted = row[Gigs.datePosted],
             employer = employer
         )
     }

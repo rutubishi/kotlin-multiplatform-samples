@@ -1,8 +1,10 @@
 package com.rutubishi.data.repository
 
 import com.rutubishi.data.database.*
-import kotlinx.datetime.LocalDate
-import network.GigRequest
+import data.network.GigRequest
+import io.ktor.server.util.*
+import io.ktor.util.*
+import kotlinx.datetime.*
 import java.time.LocalDateTime
 import java.util.Date
 
@@ -37,12 +39,10 @@ class GigRepoImpl(
                     roleType = RoleType.valueOf(roleType),
                     locType = LocType.valueOf(locType),
                     contractType = ContractType.valueOf(contractType),
-                    datePosted = LocalDate.parse(Date().toString()),
+                    datePosted = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
                     employer = employer
                 )
               gigDAO.addGig(gig)
             }
-
-        }
     }
 }

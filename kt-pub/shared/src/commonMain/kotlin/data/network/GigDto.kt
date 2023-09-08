@@ -1,4 +1,4 @@
-package network
+package data.network
 
 import kotlinx.serialization.Serializable
 
@@ -29,5 +29,7 @@ data class GigResponse(
     val locType: String,
     val contractType: String,
     val employerId: Long,
-    val employer: String
+    val employer: String,
+    val employerLogo: String,
+    val datePosted: String
 )

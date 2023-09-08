@@ -1,6 +1,8 @@
 package com.rutubishi.data.database
 
 import com.rutubishi.data.database.AppDbFactory.dbQuery
+import data.network.EmployerDto
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -12,7 +14,11 @@ data class Employer(
     val description: String,
     val webPage: String,
     val industry: String,
-)
+){
+    fun toDto(): EmployerDto = EmployerDto(
+        id, title, logo, description, webPage, industry
+    )
+}
 
 object Employers : LongIdTable("employers"){
     val title = varchar(name = "name", length = 255)
@@ -26,6 +32,7 @@ interface EmployerDAO {
     suspend fun addEmployer(employer: Employer): Employer?
     suspend fun getEmployer(id: Long): Employer?
     suspend fun getEmployerByIndustry(industry: String): List<Employer>
+    suspend fun getAllEmployers(): List<Employer>
     suspend fun searchEmployer(searchTerm: String): List<Employer>
     suspend fun editEmployer(employer: Employer): Employer?
     suspend fun deleteEmployer(id: Long): Boolean
@@ -53,6 +60,12 @@ class EmployerDAOImpl : EmployerDAO {
     override suspend fun getEmployerByIndustry(industry: String): List<Employer> = dbQuery {
         Employers
             .select { Employers.industry like industry }
+            .map(::rowToEmployer)
+    }
+
+    override suspend fun getAllEmployers(): List<Employer> = dbQuery {
+        Employers
+            .selectAll()
             .map(::rowToEmployer)
     }
 
