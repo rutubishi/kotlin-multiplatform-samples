@@ -1,6 +1,16 @@
 version: '3.1'
 
 services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - postgres
+
   db:
     image: postgres:13-alpine
     restart: on-failure
@@ -15,6 +25,9 @@ services:
       - "5432:5432"
     networks:
       - postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 1s
 
 networks:
   postgres:
