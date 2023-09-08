@@ -1,23 +1,163 @@
 openapi: "3.0.3"
 info:
-  title: "Application API"
-  description: "Application API"
-  version: "1.0.0"
+  title: "kt-pub API"
+  description: "The Kotlin Job Board API is a powerful and versatile tool designed to simplify the process of connecting employers and job seekers within the Kotlin development community. Built to facilitate seamless job postings, searching, and application management, this API empowers developers, recruiters, and businesses with the ability to efficiently manage their Kotlin-related job listings and find the perfect candidates for their roles."
+  version: "0.0.1"
 servers:
+  - url: "http://kt-pub.com/dev"
+  - url: "http://localhost:8080"
   - url: "http://0.0.0.0:8080"
+
 paths:
-  /:
+
+  /employer/add:
+    post:
+      tags:
+        - "Employer"
+      description: "Add a new employer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                "title": "Google LLC",
+                "logo": "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+                "description": "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+                "webPage": "https://careers.google.com",
+                "industry": "Technology"
+              }
+      responses:
+        "201":
+          description: "CREATED"
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                Example#1:
+                  value: {
+                    "code": 200,
+                    "status": "Success",
+                    "body": {
+                      "id": 1,
+                      "title": "Google LLC",
+                      "logo": "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+                      "description": "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+                      "webPage": "https://careers.google.com",
+                      "industry": "Technology"
+                    }
+                  }
+
+  /employer/all:
     get:
-      description: "Hello World!"
+      tags:
+        - "Employer"
+      description: "View a list of all employers"
       responses:
         "200":
           description: "OK"
           content:
-            text/plain:
+            application/json:
               schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello World!"
+                type: object
+                example: {
+                  "code": 200,
+                  "status": "Success",
+                  "body": [
+                    {
+                      "id": 1,
+                      "title": "Google LLC",
+                      "logo": "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+                      "description": "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+                      "webPage": "https://careers.google.com",
+                      "industry": "Technology"
+                    }
+                  ]
+                }
+
+  /gigs/all:
+    get:
+      tags:
+        - "Gigs"
+      description: "View a list of all gigs available"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {
+                  "code": 200,
+                  "status": "Success",
+                  "body": [
+                    {
+                      "id": 1,
+                      "title": "Product Manager, Android Growth",
+                      "description": "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+                      "requirements": "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+                      "location": "Nairobi, Kenya",
+                      "benefits": null,
+                      "roleType": "FULL_TIME",
+                      "locType": "HYBRID",
+                      "contractType": "PERMANENT",
+                      "employerId": 1,
+                      "employer": "Google LLC",
+                      "employerLogo": "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+                      "datePosted": "2023-09-08T13:26:58.509143"
+                    }
+                  ]
+                }
+
+  /gigs/add:
+    "post":
+      "description": "Add a new gig"
+      tags:
+        - "Gigs"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                "title": "Product Manager, Android Growth",
+                "description": "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+                "requirements": "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+                "location": "Nairobi, Kenya",
+                "benefits": null,
+                "roleType": "FULL_TIME",
+                "locType": "HYBRID",
+                "contractType": "PERMANENT",
+                "employerId": 1
+              }
+
+      responses:
+        "201":
+          description: "CREATED"
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {
+                  "code": 201,
+                  "status": "Created Gig",
+                  "body": {
+                    "id": 1,
+                    "title": "Product Manager, Android Growth",
+                    "description": "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+                    "requirements": "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+                    "location": "Nairobi, Kenya",
+                    "benefits": null,
+                    "roleType": "FULL_TIME",
+                    "locType": "HYBRID",
+                    "contractType": "PERMANENT",
+                    "employerId": 1,
+                    "employer": "Google LLC",
+                    "employerLogo": "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+                    "datePosted": "2023-09-08T13:26:58.509143264"
+                  }
+                }
+
 components:
   schemas:

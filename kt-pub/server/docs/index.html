@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Application API</title>
+  <title>kt-pub API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
@@ -705,9 +705,19 @@
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
-                  <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="rootGet" class="">
-                      <a href="#api-Default-rootGet">rootGet</a>
+                  <li class="nav-header" data-group="Employer"><a href="#api-Employer">API Methods - Employer</a></li>
+                    <li data-group="Employer" data-name="employerAddPost" class="">
+                      <a href="#api-Employer-employerAddPost">employerAddPost</a>
+                    </li>
+                    <li data-group="Employer" data-name="employerAllGet" class="">
+                      <a href="#api-Employer-employerAllGet">employerAllGet</a>
+                    </li>
+                  <li class="nav-header" data-group="Gigs"><a href="#api-Gigs">API Methods - Gigs</a></li>
+                    <li data-group="Gigs" data-name="gigsAddPost" class="">
+                      <a href="#api-Gigs-gigsAddPost">gigsAddPost</a>
+                    </li>
+                    <li data-group="Gigs" data-name="gigsAllGet" class="">
+                      <a href="#api-Gigs-gigsAllGet">gigsAllGet</a>
                     </li>
           </ul>
         </nav>
@@ -715,109 +725,113 @@
       <div id="content">
         <div id="project">
           <div class="pull-left">
-            <h1>Application API</h1>
+            <h1>kt-pub API</h1>
           </div>
           <div class="clearfix"></div>
         </div>
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0</div>
+              <div class="app-desc">Version: 0.0.1</div>
             <hr>
-            <div>Application API</div>
+            <div>The Kotlin Job Board API is a powerful and versatile tool designed to simplify the process of connecting employers and job seekers within the Kotlin development community. Built to facilitate seamless job postings, searching, and application management, this API empowers developers, recruiters, and businesses with the ability to efficiently manage their Kotlin-related job listings and find the perfect candidates for their roles.</div>
           </div>
         </div>
         <div id="sections">
-                <section id="api-Default">
-                  <h1>Default</h1>
-                    <div id="api-Default-rootGet">
-                      <article id="api-Default-rootGet-0" data-group="User" data-name="rootGet" data-version="0">
+                <section id="api-Employer">
+                  <h1>Employer</h1>
+                    <div id="api-Employer-employerAddPost">
+                      <article id="api-Employer-employerAddPost-0" data-group="User" data-name="employerAddPost" data-version="0">
                         <div class="pull-left">
-                          <h1>rootGet</h1>
+                          <h1>employerAddPost</h1>
                           <p></p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Hello World!</p>
+                        <p class="marked">Add a new employer</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/employer/add</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-rootGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Employer-employerAddPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Employer-employerAddPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Employer-employerAddPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Employer-employerAddPost-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-rootGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Accept: text/plain"\
-"http://0.0.0.0:8080/"</code></pre>
+                          <div class="tab-pane active" id="examples-Employer-employerAddPost-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
+-H "Accept: application/json"\
+-H "Content-Type: application/json"\
+"http://kt-pub.com/dev/employer/add"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-rootGet-0-java">
+                          <div class="tab-pane" id="examples-Employer-employerAddPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
+import io.swagger.client.api.EmployerApi;
 
 import java.io.File;
 import java.util.*;
 
-public class DefaultApiExample {
+public class EmployerApiExample {
 
     public static void main(String[] args) {
         
-        DefaultApi apiInstance = new DefaultApi();
+        EmployerApi apiInstance = new EmployerApi();
+        Object body = ; // Object | 
         try {
-            'String' result = apiInstance.rootGet();
+            Object result = apiInstance.employerAddPost(body);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
+            System.err.println("Exception when calling EmployerApi#employerAddPost");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-rootGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+                          <div class="tab-pane" id="examples-Employer-employerAddPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.EmployerApi;
 
-public class DefaultApiExample {
+public class EmployerApiExample {
 
     public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
+        EmployerApi apiInstance = new EmployerApi();
+        Object body = ; // Object | 
         try {
-            'String' result = apiInstance.rootGet();
+            Object result = apiInstance.employerAddPost(body);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
+            System.err.println("Exception when calling EmployerApi#employerAddPost");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-rootGet-0-groovy">
+  <div class="tab-pane" id="examples-Employer-employerAddPost-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Object *body = ; //  (optional)
 
-[apiInstance rootGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
+EmployerApi *apiInstance = [[EmployerApi alloc] init];
+
+[apiInstance employerAddPostWith:body
+              completionHandler: ^(Object output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -828,10 +842,13 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var ApplicationApi = require('application_api');
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
 
-var api = new ApplicationApi.DefaultApi()
+var api = new KtPubApi.EmployerApi()
+var opts = { 
+  'body':  // {{Object}} 
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -839,14 +856,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.rootGet(callback);
+api.employerAddPost(opts, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-rootGet-0-angular">
+                            <!--<div class="tab-pane" id="examples-Employer-employerAddPost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-csharp">
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -855,21 +872,22 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class rootGetExample
+    public class employerAddPostExample
     {
         public void main()
         {
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new EmployerApi();
+            var body = new Object(); // Object |  (optional) 
 
             try
             {
-                'String' result = apiInstance.rootGet();
+                Object result = apiInstance.employerAddPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.rootGet: " + e.Message );
+                Debug.Print("Exception when calling EmployerApi.employerAddPost: " + e.Message );
             }
         }
     }
@@ -877,38 +895,40 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-php">
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\ApiDefaultApi();
+$api_instance = new Swagger\Client\ApiEmployerApi();
+$body = ; // Object | 
 
 try {
-    $result = $api_instance->rootGet();
+    $result = $api_instance->employerAddPost($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->rootGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmployerApi->employerAddPost: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-perl">
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
+use WWW::SwaggerClient::EmployerApi;
 
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $api_instance = WWW::SwaggerClient::EmployerApi->new();
+my $body = WWW::SwaggerClient::Object::Object->new(); # Object | 
 
 eval { 
-    my $result = $api_instance->rootGet();
+    my $result = $api_instance->employerAddPost(body => $body);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->rootGet: $@\n";
+    warn "Exception when calling EmployerApi->employerAddPost: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-python">
+                            <div class="tab-pane" id="examples-Employer-employerAddPost-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -916,13 +936,335 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = swagger_client.EmployerApi()
+body =  # Object |  (optional)
 
 try: 
-    api_response = api_instance.root_get()
+    api_response = api_instance.employer_add_post(body=body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->rootGet: %s\n" % e)</code></pre>
+    print("Exception when calling EmployerApi->employerAddPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body </td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "example" : {
+          "title" : "Google LLC",
+          "logo" : "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+          "description" : "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+          "webPage" : "https://careers.google.com",
+          "industry" : "Technology"
+        }
+      }
+    }
+  }
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_employerAddPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_employerAddPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 201 - CREATED </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-employerAddPost-201-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-employerAddPost-201-schema">
+                                  <div id='responses-employerAddPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "CREATED",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "x-content-type" : "application/json"
+      },
+      "examples" : {
+        "Example#1" : {
+          "value" : {
+            "code" : 200,
+            "status" : "Success",
+            "body" : {
+              "id" : 1,
+              "title" : "Google LLC",
+              "logo" : "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+              "description" : "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+              "webPage" : "https://careers.google.com",
+              "industry" : "Technology"
+            }
+          }
+        }
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-employerAddPost-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-employerAddPost-201-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-employerAddPost-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Employer-employerAllGet">
+                      <article id="api-Employer-employerAllGet-0" data-group="User" data-name="employerAllGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>employerAllGet</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">View a list of all employers</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/employer/all</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Employer-employerAllGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Employer-employerAllGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Employer-employerAllGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Employer-employerAllGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Employer-employerAllGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://kt-pub.com/dev/employer/all"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Employer-employerAllGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.EmployerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class EmployerApiExample {
+
+    public static void main(String[] args) {
+        
+        EmployerApi apiInstance = new EmployerApi();
+        try {
+            Object result = apiInstance.employerAllGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EmployerApi#employerAllGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Employer-employerAllGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.EmployerApi;
+
+public class EmployerApiExample {
+
+    public static void main(String[] args) {
+        EmployerApi apiInstance = new EmployerApi();
+        try {
+            Object result = apiInstance.employerAllGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EmployerApi#employerAllGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Employer-employerAllGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+EmployerApi *apiInstance = [[EmployerApi alloc] init];
+
+[apiInstance employerAllGetWithCompletionHandler: 
+              ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
+
+var api = new KtPubApi.EmployerApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.employerAllGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Employer-employerAllGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class employerAllGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new EmployerApi();
+
+            try
+            {
+                Object result = apiInstance.employerAllGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling EmployerApi.employerAllGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiEmployerApi();
+
+try {
+    $result = $api_instance->employerAllGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmployerApi->employerAllGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::EmployerApi;
+
+my $api_instance = WWW::SwaggerClient::EmployerApi->new();
+
+eval { 
+    my $result = $api_instance->employerAllGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling EmployerApi->employerAllGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Employer-employerAllGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.EmployerApi()
+
+try: 
+    api_response = api_instance.employer_all_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling EmployerApi->employerAllGet: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -938,33 +1280,40 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-rootGet-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-employerAllGet-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-rootGet-200-schema">
-                                  <div id='responses-rootGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-employerAllGet-200-schema">
+                                  <div id='responses-employerAllGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
   "description" : "OK",
   "content" : {
-    "text/plain" : {
+    "application/json" : {
       "schema" : {
-        "type" : "string",
-        "x-content-type" : "text/plain"
-      },
-      "examples" : {
-        "Example#1" : {
-          "value" : "Hello World!"
-        }
+        "type" : "object",
+        "example" : {
+          "code" : 200,
+          "status" : "Success",
+          "body" : [ {
+            "id" : 1,
+            "title" : "Google LLC",
+            "logo" : "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+            "description" : "Google LLC is an American multinational technology company focusing on artificial intelligence, online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
+            "webPage" : "https://careers.google.com",
+            "industry" : "Technology"
+          } ]
+        },
+        "x-content-type" : "application/json"
       }
     }
   }
 };
-                                        var schema = schemaWrapper.content["text/plain"].schema;
+                                        var schema = schemaWrapper.content["application/json"].schema;
                                         if (schema.$ref != null) {
                                           schema = defsParser.$refs.get(schema.$ref);
                                         } else {
@@ -977,14 +1326,631 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-rootGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-rootGet-200-schema-200');
+                                        $('#responses-employerAllGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-employerAllGet-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-rootGet-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-employerAllGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-Gigs">
+                  <h1>Gigs</h1>
+                    <div id="api-Gigs-gigsAddPost">
+                      <article id="api-Gigs-gigsAddPost-0" data-group="User" data-name="gigsAddPost" data-version="0">
+                        <div class="pull-left">
+                          <h1>gigsAddPost</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Add a new gig</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/gigs/add</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Gigs-gigsAddPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigsAddPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigsAddPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Gigs-gigsAddPost-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
+-H "Accept: application/json"\
+-H "Content-Type: application/json"\
+"http://kt-pub.com/dev/gigs/add"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.GigsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class GigsApiExample {
+
+    public static void main(String[] args) {
+        
+        GigsApi apiInstance = new GigsApi();
+        Object body = ; // Object | 
+        try {
+            Object result = apiInstance.gigsAddPost(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GigsApi#gigsAddPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.GigsApi;
+
+public class GigsApiExample {
+
+    public static void main(String[] args) {
+        GigsApi apiInstance = new GigsApi();
+        Object body = ; // Object | 
+        try {
+            Object result = apiInstance.gigsAddPost(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GigsApi#gigsAddPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Object *body = ; //  (optional)
+
+GigsApi *apiInstance = [[GigsApi alloc] init];
+
+[apiInstance gigsAddPostWith:body
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
+
+var api = new KtPubApi.GigsApi()
+var opts = { 
+  'body':  // {{Object}} 
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.gigsAddPost(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Gigs-gigsAddPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class gigsAddPostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new GigsApi();
+            var body = new Object(); // Object |  (optional) 
+
+            try
+            {
+                Object result = apiInstance.gigsAddPost(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling GigsApi.gigsAddPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiGigsApi();
+$body = ; // Object | 
+
+try {
+    $result = $api_instance->gigsAddPost($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GigsApi->gigsAddPost: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::GigsApi;
+
+my $api_instance = WWW::SwaggerClient::GigsApi->new();
+my $body = WWW::SwaggerClient::Object::Object->new(); # Object | 
+
+eval { 
+    my $result = $api_instance->gigsAddPost(body => $body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling GigsApi->gigsAddPost: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.GigsApi()
+body =  # Object |  (optional)
+
+try: 
+    api_response = api_instance.gigs_add_post(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GigsApi->gigsAddPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body </td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "example" : {
+          "title" : "Product Manager, Android Growth",
+          "description" : "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+          "requirements" : "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+          "location" : "Nairobi, Kenya",
+          "benefits" : null,
+          "roleType" : "FULL_TIME",
+          "locType" : "HYBRID",
+          "contractType" : "PERMANENT",
+          "employerId" : 1
+        }
+      }
+    }
+  }
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_gigsAddPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_gigsAddPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 201 - CREATED </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-gigsAddPost-201-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-gigsAddPost-201-schema">
+                                  <div id='responses-gigsAddPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "CREATED",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "example" : {
+          "code" : 201,
+          "status" : "Created Gig",
+          "body" : {
+            "id" : 1,
+            "title" : "Product Manager, Android Growth",
+            "description" : "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+            "requirements" : "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+            "location" : "Nairobi, Kenya",
+            "benefits" : null,
+            "roleType" : "FULL_TIME",
+            "locType" : "HYBRID",
+            "contractType" : "PERMANENT",
+            "employerId" : 1,
+            "employer" : "Google LLC",
+            "employerLogo" : "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+            "datePosted" : "2023-09-08T13:26:58.509143264"
+          }
+        },
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-gigsAddPost-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-gigsAddPost-201-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-gigsAddPost-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Gigs-gigsAllGet">
+                      <article id="api-Gigs-gigsAllGet-0" data-group="User" data-name="gigsAllGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>gigsAllGet</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">View a list of all gigs available</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/gigs/all</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Gigs-gigsAllGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigsAllGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigsAllGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Gigs-gigsAllGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://kt-pub.com/dev/gigs/all"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.GigsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class GigsApiExample {
+
+    public static void main(String[] args) {
+        
+        GigsApi apiInstance = new GigsApi();
+        try {
+            Object result = apiInstance.gigsAllGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GigsApi#gigsAllGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.GigsApi;
+
+public class GigsApiExample {
+
+    public static void main(String[] args) {
+        GigsApi apiInstance = new GigsApi();
+        try {
+            Object result = apiInstance.gigsAllGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GigsApi#gigsAllGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+GigsApi *apiInstance = [[GigsApi alloc] init];
+
+[apiInstance gigsAllGetWithCompletionHandler: 
+              ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
+
+var api = new KtPubApi.GigsApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.gigsAllGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Gigs-gigsAllGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class gigsAllGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new GigsApi();
+
+            try
+            {
+                Object result = apiInstance.gigsAllGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling GigsApi.gigsAllGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiGigsApi();
+
+try {
+    $result = $api_instance->gigsAllGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GigsApi->gigsAllGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::GigsApi;
+
+my $api_instance = WWW::SwaggerClient::GigsApi->new();
+
+eval { 
+    my $result = $api_instance->gigsAllGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling GigsApi->gigsAllGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.GigsApi()
+
+try: 
+    api_response = api_instance.gigs_all_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GigsApi->gigsAllGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-gigsAllGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-gigsAllGet-200-schema">
+                                  <div id='responses-gigsAllGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "object",
+        "example" : {
+          "code" : 200,
+          "status" : "Success",
+          "body" : [ {
+            "id" : 1,
+            "title" : "Product Manager, Android Growth",
+            "description" : "In this role, you will work cross-functionally to guide products from conception to launch by connecting the technical and business worlds. You can break down complex problems into steps that drive product development.",
+            "requirements" : "Bachelor's degree or equivalent practical experience. Candidates will typically have 4 years of experience in product management, consulting, co-founder or related technical role. Typically 2 years of experience building and shipping technical products.",
+            "location" : "Nairobi, Kenya",
+            "benefits" : null,
+            "roleType" : "FULL_TIME",
+            "locType" : "HYBRID",
+            "contractType" : "PERMANENT",
+            "employerId" : 1,
+            "employer" : "Google LLC",
+            "employerLogo" : "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png",
+            "datePosted" : "2023-09-08T13:26:58.509143"
+          } ]
+        },
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-gigsAllGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-gigsAllGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-gigsAllGet-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
