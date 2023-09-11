@@ -1,0 +1,23 @@
+name: kt-pub
+on:
+  - push
+  - pull_request
+
+jobs:
+  server-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'tumerin'
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+
+      - name: Test Server
+        run: ./gradlew :server:jvmTest
+        working-directory: ./kt-pub
