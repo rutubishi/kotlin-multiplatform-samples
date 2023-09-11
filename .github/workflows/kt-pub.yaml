@@ -18,6 +18,9 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
 
-      - name: Test Server
+      - name: Setup Gradle & Run Server Test
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 8.2.1
         run: ./gradlew :server:jvmTest
         working-directory: ./kt-pub
