@@ -22,5 +22,5 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.2.1
-      - run: ./gradlew :server:jvmTest
+      - run: gradle :server:jvmTest
         working-directory: ./kt-pub
