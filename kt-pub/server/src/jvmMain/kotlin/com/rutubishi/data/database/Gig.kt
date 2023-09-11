@@ -1,18 +1,12 @@
 package com.rutubishi.data.database
 
 import com.rutubishi.data.database.AppDbFactory.dbQuery
-import data.network.EmployerDto
 import data.network.GigResponse
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.Clock
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
-import java.util.*
 
 data class Gig(
     val id: Long = 0L,

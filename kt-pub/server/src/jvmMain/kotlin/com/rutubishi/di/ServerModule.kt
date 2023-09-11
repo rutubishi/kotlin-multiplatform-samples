@@ -6,12 +6,18 @@ import com.rutubishi.data.repository.EmployerRepository
 import com.rutubishi.data.repository.GigRepoImpl
 import com.rutubishi.data.repository.GigRepository
 import com.zaxxer.hikari.HikariDataSource
+import org.koin.core.module.Module
 import org.koin.core.scope.get
 import org.koin.dsl.module
 
 val serverModule = module {
-    // Database
-    single <HikariDataSource> { AppDataSource }
+    sharedServerModule {
+        single <HikariDataSource> { AppDataSource }
+    }
+}
+
+fun Module.sharedServerModule (module: Module.() -> Unit){
+    module()
     single <EmployerDAO>{ EmployerDAOImpl() }
     single <GigDAO>{ GigDAOImpl(employerDAO = get()) }
     single <EmployerRepository>{ EmployerRepoImpl(employerDAO = get()) }
