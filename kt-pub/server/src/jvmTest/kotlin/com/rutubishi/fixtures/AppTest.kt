@@ -7,10 +7,14 @@ import com.rutubishi.plugins.configureSerialization
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
 import io.ktor.server.testing.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 
 abstract class AppTest {
+
     fun baseTestApp(block: suspend ApplicationTestBuilder.() -> Unit ) = testApplication {
             application {
                 configureTestDI()
@@ -30,14 +34,15 @@ abstract class AppTest {
         }
     }
 
-    private fun configureTestDB() {
-        AppDbFactory.init(TestDB)
+    private fun Application.configureTestDB() {
+        val testDB by inject<HikariDataSource>()
+        AppDbFactory.init(testDB)
     }
 
-    private object TestDB : HikariDataSource(){
+    object TestDB : HikariDataSource(){
         init {
             driverClassName = "org.h2.Driver"
-            jdbcUrl = "jdbc:h2:mem:test"
+            jdbcUrl = "jdbc:h2:mem:test;MODE=MySQL"
             maximumPoolSize = 5
             isAutoCommit = true
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"
