@@ -19,7 +19,6 @@ abstract class AppTest {
 
     fun baseTestApp(block: suspend ApplicationTestBuilder.() -> Unit ) = testApplication {
             application {
-                dispose()
                 configureTestDI()
                 configureTestDB()
                 configureHTTP()
