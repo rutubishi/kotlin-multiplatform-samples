@@ -76,7 +76,7 @@ paths:
                   ]
                 }
 
-  /gigs/all:
+  /gig/all:
     get:
       tags:
         - "Gigs"
@@ -110,7 +110,7 @@ paths:
                   ]
                 }
 
-  /gigs/add:
+  /gig/add:
     "post":
       "description": "Add a new gig"
       tags:

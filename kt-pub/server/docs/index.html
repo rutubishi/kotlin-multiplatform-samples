@@ -713,11 +713,11 @@
                       <a href="#api-Employer-employerAllGet">employerAllGet</a>
                     </li>
                   <li class="nav-header" data-group="Gigs"><a href="#api-Gigs">API Methods - Gigs</a></li>
-                    <li data-group="Gigs" data-name="gigsAddPost" class="">
-                      <a href="#api-Gigs-gigsAddPost">gigsAddPost</a>
+                    <li data-group="Gigs" data-name="gigAddPost" class="">
+                      <a href="#api-Gigs-gigAddPost">gigAddPost</a>
                     </li>
-                    <li data-group="Gigs" data-name="gigsAllGet" class="">
-                      <a href="#api-Gigs-gigsAllGet">gigsAllGet</a>
+                    <li data-group="Gigs" data-name="gigAllGet" class="">
+                      <a href="#api-Gigs-gigAllGet">gigAllGet</a>
                     </li>
           </ul>
         </nav>
@@ -1343,10 +1343,10 @@ except ApiException as e:
                   </section>
                 <section id="api-Gigs">
                   <h1>Gigs</h1>
-                    <div id="api-Gigs-gigsAddPost">
-                      <article id="api-Gigs-gigsAddPost-0" data-group="User" data-name="gigsAddPost" data-version="0">
+                    <div id="api-Gigs-gigAddPost">
+                      <article id="api-Gigs-gigAddPost-0" data-group="User" data-name="gigAddPost" data-version="0">
                         <div class="pull-left">
-                          <h1>gigsAddPost</h1>
+                          <h1>gigAddPost</h1>
                           <p></p>
                         </div>
                         <div class="pull-right"></div>
@@ -1355,32 +1355,32 @@ except ApiException as e:
                         <p class="marked">Add a new gig</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/gigs/add</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/gig/add</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Gigs-gigsAddPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Gigs-gigsAddPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Gigs-gigsAddPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAddPost-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Gigs-gigAddPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigAddPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigAddPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAddPost-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Gigs-gigsAddPost-0-curl">
+                          <div class="tab-pane active" id="examples-Gigs-gigAddPost-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Accept: application/json"\
 -H "Content-Type: application/json"\
-"http://kt-pub.com/dev/gigs/add"</code></pre>
+"http://kt-pub.com/dev/gig/add"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-java">
+                          <div class="tab-pane" id="examples-Gigs-gigAddPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1396,17 +1396,17 @@ public class GigsApiExample {
         GigsApi apiInstance = new GigsApi();
         Object body = ; // Object | 
         try {
-            Object result = apiInstance.gigsAddPost(body);
+            Object result = apiInstance.gigAddPost(body);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling GigsApi#gigsAddPost");
+            System.err.println("Exception when calling GigsApi#gigAddPost");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-android">
+                          <div class="tab-pane" id="examples-Gigs-gigAddPost-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.GigsApi;
 
 public class GigsApiExample {
@@ -1415,25 +1415,25 @@ public class GigsApiExample {
         GigsApi apiInstance = new GigsApi();
         Object body = ; // Object | 
         try {
-            Object result = apiInstance.gigsAddPost(body);
+            Object result = apiInstance.gigAddPost(body);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling GigsApi#gigsAddPost");
+            System.err.println("Exception when calling GigsApi#gigAddPost");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-groovy">
+  <div class="tab-pane" id="examples-Gigs-gigAddPost-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-objc">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Object *body = ; //  (optional)
 
 GigsApi *apiInstance = [[GigsApi alloc] init];
 
-[apiInstance gigsAddPostWith:body
+[apiInstance gigAddPostWith:body
               completionHandler: ^(Object output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -1445,7 +1445,7 @@ GigsApi *apiInstance = [[GigsApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-javascript">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
 
 var api = new KtPubApi.GigsApi()
@@ -1459,14 +1459,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.gigsAddPost(opts, callback);
+api.gigAddPost(opts, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Gigs-gigsAddPost-0-angular">
+                            <!--<div class="tab-pane" id="examples-Gigs-gigAddPost-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-csharp">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1475,7 +1475,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class gigsAddPostExample
+    public class gigAddPostExample
     {
         public void main()
         {
@@ -1485,12 +1485,12 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.gigsAddPost(body);
+                Object result = apiInstance.gigAddPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling GigsApi.gigsAddPost: " + e.Message );
+                Debug.Print("Exception when calling GigsApi.gigAddPost: " + e.Message );
             }
         }
     }
@@ -1498,7 +1498,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-php">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -1506,15 +1506,15 @@ $api_instance = new Swagger\Client\ApiGigsApi();
 $body = ; // Object | 
 
 try {
-    $result = $api_instance->gigsAddPost($body);
+    $result = $api_instance->gigAddPost($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling GigsApi->gigsAddPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling GigsApi->gigAddPost: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-perl">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::GigsApi;
@@ -1523,15 +1523,15 @@ my $api_instance = WWW::SwaggerClient::GigsApi->new();
 my $body = WWW::SwaggerClient::Object::Object->new(); # Object | 
 
 eval { 
-    my $result = $api_instance->gigsAddPost(body => $body);
+    my $result = $api_instance->gigAddPost(body => $body);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling GigsApi->gigsAddPost: $@\n";
+    warn "Exception when calling GigsApi->gigAddPost: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAddPost-0-python">
+                            <div class="tab-pane" id="examples-Gigs-gigAddPost-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1543,10 +1543,10 @@ api_instance = swagger_client.GigsApi()
 body =  # Object |  (optional)
 
 try: 
-    api_response = api_instance.gigs_add_post(body=body)
+    api_response = api_instance.gig_add_post(body=body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GigsApi->gigsAddPost: %s\n" % e)</code></pre>
+    print("Exception when calling GigsApi->gigAddPost: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1598,12 +1598,12 @@ except ApiException as e:
                                   }
                                 
                                   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                  var result = $('#d2e199_gigsAddPost_body');
+                                  var result = $('#d2e199_gigAddPost_body');
                                   result.empty();
                                   result.append(view.render());
                                 });
                                 </script>
-                                <div id="d2e199_gigsAddPost_body"></div>
+                                <div id="d2e199_gigAddPost_body"></div>
                                 </td>
                                 </tr>
                             </table>
@@ -1615,14 +1615,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-gigsAddPost-201-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-gigAddPost-201-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-gigsAddPost-201-schema">
-                                  <div id='responses-gigsAddPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-gigAddPost-201-schema">
+                                  <div id='responses-gigAddPost-201-schema-201' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -1668,24 +1668,24 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-gigsAddPost-201-schema-data').val(stringify(schema));
-                                        var result = $('#responses-gigsAddPost-201-schema-201');
+                                        $('#responses-gigAddPost-201-schema-data').val(stringify(schema));
+                                        var result = $('#responses-gigAddPost-201-schema-201');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-gigsAddPost-201-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-gigAddPost-201-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Gigs-gigsAllGet">
-                      <article id="api-Gigs-gigsAllGet-0" data-group="User" data-name="gigsAllGet" data-version="0">
+                    <div id="api-Gigs-gigAllGet">
+                      <article id="api-Gigs-gigAllGet-0" data-group="User" data-name="gigAllGet" data-version="0">
                         <div class="pull-left">
-                          <h1>gigsAllGet</h1>
+                          <h1>gigAllGet</h1>
                           <p></p>
                         </div>
                         <div class="pull-right"></div>
@@ -1694,31 +1694,31 @@ except ApiException as e:
                         <p class="marked">View a list of all gigs available</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/gigs/all</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/gig/all</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Gigs-gigsAllGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Gigs-gigsAllGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Gigs-gigsAllGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Gigs-gigsAllGet-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Gigs-gigAllGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigAllGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Gigs-gigAllGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Gigs-gigAllGet-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Gigs-gigsAllGet-0-curl">
+                          <div class="tab-pane active" id="examples-Gigs-gigAllGet-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
 -H "Accept: application/json"\
-"http://kt-pub.com/dev/gigs/all"</code></pre>
+"http://kt-pub.com/dev/gig/all"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-java">
+                          <div class="tab-pane" id="examples-Gigs-gigAllGet-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1733,17 +1733,17 @@ public class GigsApiExample {
         
         GigsApi apiInstance = new GigsApi();
         try {
-            Object result = apiInstance.gigsAllGet();
+            Object result = apiInstance.gigAllGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling GigsApi#gigsAllGet");
+            System.err.println("Exception when calling GigsApi#gigAllGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-android">
+                          <div class="tab-pane" id="examples-Gigs-gigAllGet-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.GigsApi;
 
 public class GigsApiExample {
@@ -1751,24 +1751,24 @@ public class GigsApiExample {
     public static void main(String[] args) {
         GigsApi apiInstance = new GigsApi();
         try {
-            Object result = apiInstance.gigsAllGet();
+            Object result = apiInstance.gigAllGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling GigsApi#gigsAllGet");
+            System.err.println("Exception when calling GigsApi#gigAllGet");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-groovy">
+  <div class="tab-pane" id="examples-Gigs-gigAllGet-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-objc">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">
 GigsApi *apiInstance = [[GigsApi alloc] init];
 
-[apiInstance gigsAllGetWithCompletionHandler: 
+[apiInstance gigAllGetWithCompletionHandler: 
               ^(Object output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -1780,7 +1780,7 @@ GigsApi *apiInstance = [[GigsApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-javascript">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var KtPubApi = require('kt_pub_api');
 
 var api = new KtPubApi.GigsApi()
@@ -1791,14 +1791,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.gigsAllGet(callback);
+api.gigAllGet(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Gigs-gigsAllGet-0-angular">
+                            <!--<div class="tab-pane" id="examples-Gigs-gigAllGet-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-csharp">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1807,7 +1807,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class gigsAllGetExample
+    public class gigAllGetExample
     {
         public void main()
         {
@@ -1816,12 +1816,12 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.gigsAllGet();
+                Object result = apiInstance.gigAllGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling GigsApi.gigsAllGet: " + e.Message );
+                Debug.Print("Exception when calling GigsApi.gigAllGet: " + e.Message );
             }
         }
     }
@@ -1829,22 +1829,22 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-php">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiGigsApi();
 
 try {
-    $result = $api_instance->gigsAllGet();
+    $result = $api_instance->gigAllGet();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling GigsApi->gigsAllGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling GigsApi->gigAllGet: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-perl">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::GigsApi;
@@ -1852,15 +1852,15 @@ use WWW::SwaggerClient::GigsApi;
 my $api_instance = WWW::SwaggerClient::GigsApi->new();
 
 eval { 
-    my $result = $api_instance->gigsAllGet();
+    my $result = $api_instance->gigAllGet();
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling GigsApi->gigsAllGet: $@\n";
+    warn "Exception when calling GigsApi->gigAllGet: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Gigs-gigsAllGet-0-python">
+                            <div class="tab-pane" id="examples-Gigs-gigAllGet-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1871,10 +1871,10 @@ from pprint import pprint
 api_instance = swagger_client.GigsApi()
 
 try: 
-    api_response = api_instance.gigs_all_get()
+    api_response = api_instance.gig_all_get()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GigsApi->gigsAllGet: %s\n" % e)</code></pre>
+    print("Exception when calling GigsApi->gigAllGet: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1890,14 +1890,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-gigsAllGet-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-gigAllGet-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-gigsAllGet-200-schema">
-                                  <div id='responses-gigsAllGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-gigAllGet-200-schema">
+                                  <div id='responses-gigAllGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -1943,14 +1943,14 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-gigsAllGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-gigsAllGet-200-schema-200');
+                                        $('#responses-gigAllGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-gigAllGet-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-gigsAllGet-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-gigAllGet-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

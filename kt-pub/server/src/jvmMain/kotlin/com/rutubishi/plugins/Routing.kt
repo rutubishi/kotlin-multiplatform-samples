@@ -15,7 +15,6 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder
 import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
-
     val gigRepository: GigRepository by inject()
     val employerRepository: EmployerRepository by inject()
 

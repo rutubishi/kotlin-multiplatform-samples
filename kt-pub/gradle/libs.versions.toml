@@ -32,6 +32,7 @@ ktor-server-openapi = { module = "io.ktor:ktor-server-openapi", version.ref = "k
 ktor-server-status-pages-jvm = { module = "io.ktor:ktor-server-status-pages-jvm", version.ref = "ktor" }
 ktor-server-swagger-jvm = { module = "io.ktor:ktor-server-swagger-jvm", version.ref = "ktor" }
 ktor-server-tests-jvm = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
+ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
 hikari = { module = "com.zaxxer:HikariCP", version.ref="hikari" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref="exposed" }
@@ -61,7 +62,7 @@ ktor-server = ["ktor-serialization-kotlinx-json-jvm", "ktor-server-auth-jvm", "k
     "ktor-server-host-common-jvm", "ktor-server-netty-jvm", "ktor-server-openapi", "ktor-server-status-pages-jvm",
     "ktor-server-swagger-jvm", "logback-classic", "exposed-core", "exposed-dao", "exposed-jdbc", "h2", "hikari", "ehcache",
     "exposed-datetime", "postgres", "flyway"]
-ktor-server-tests =["ktor-server-tests-jvm", "kotlin-test-junit"]
+ktor-server-tests =["ktor-server-tests-jvm", "ktor-server-test-host", "kotlin-test-junit"]
 shared = ["koin-core", "koin-ktor", "koin-logger"]
 
 

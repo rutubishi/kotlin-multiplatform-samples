@@ -16,7 +16,7 @@ val serverModule = module {
     }
 }
 
-fun Module.sharedServerModule (module: Module.() -> Unit){
+inline fun Module.sharedServerModule (module: Module.() -> Unit){
     module()
     single <EmployerDAO>{ EmployerDAOImpl() }
     single <GigDAO>{ GigDAOImpl(employerDAO = get()) }
