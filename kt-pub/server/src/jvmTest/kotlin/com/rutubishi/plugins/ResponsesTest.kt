@@ -11,18 +11,24 @@ class ResponsesTest : AppTest() {
     @Test
     fun `should show correct status codes`() = baseTestApp {
 
+
         client.get("/xyz-random").apply {
             assertEquals(HttpStatusCode.NotFound, status)
         }
 
+        // documentation pages
+        client.get("/openapi").apply {
+            assertOkStatus()
+        }
+
         // Employer
         client.get(AppRouter.showEmployers).apply {
-            assertEquals(HttpStatusCode.OK, status)
+            assertOkStatus()
         }
 
         // Gig
         client.get(AppRouter.showAllGigs).apply {
-            assertEquals(HttpStatusCode.OK, status)
+            assertOkStatus()
         }
 
     }
