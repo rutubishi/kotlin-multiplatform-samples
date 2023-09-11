@@ -7,10 +7,19 @@ fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
 }
 
-fun Application.module() {
-    configureDI()
+private fun Application.sharedModuleConfig(){
     configureDB()
     configureHTTP()
     configureSerialization()
     configureRouting()
+}
+
+fun Application.module() {
+    configureDI()
+    sharedModuleConfig()
+}
+
+fun Application.testModule(){
+    configureTestDI()
+    sharedModuleConfig()
 }

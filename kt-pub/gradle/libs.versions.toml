@@ -12,7 +12,7 @@ hikari="5.0.1"
 ehcache="3.10.8"
 koin="3.4.3"
 postgres="42.5.1"
-flyway="6.5.2"
+flyway="9.21.1"
 
 
 [libraries]

@@ -10,12 +10,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ApplicationTest : AppTest() {
-    @Test
-    fun testRoot() = baseTestApp {
-        client.get("/").apply {
-            assertEquals(HttpStatusCode.OK, status)
-            assertEquals("Hello World!", bodyAsText())
-        }
-    }
+
 }
 

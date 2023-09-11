@@ -16,6 +16,19 @@ val serverModule = module {
     }
 }
 
+val serverTestModule = module {
+    sharedServerModule {
+        single <HikariDataSource> { HikariDataSource().apply {
+            driverClassName = "org.h2.Driver"
+            jdbcUrl = "jdbc:h2:mem:test;MODE=PostgreSQL"
+            maximumPoolSize = 5
+            isAutoCommit = true
+            transactionIsolation = "TRANSACTION_REPEATABLE_READ"
+            validate()
+        } }
+    }
+}
+
 inline fun Module.sharedServerModule (module: Module.() -> Unit){
     module()
     single <EmployerDAO>{ EmployerDAOImpl() }

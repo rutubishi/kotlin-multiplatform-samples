@@ -19,6 +19,9 @@ fun Application.configureRouting() {
     val employerRepository: EmployerRepository by inject()
 
     install(StatusPages) {
+        status(HttpStatusCode.NotFound){ call, code ->
+            call.respond(status = code, message = AppResponse(code = code.value, status = "Not found", body = null))
+        }
         exception<Throwable> { call, cause ->
             call.respond(AppResponse(code = HttpStatusCode.InternalServerError.value, status = "Failed", body = "Cause: ${cause.message}"))
         }
