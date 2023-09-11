@@ -47,6 +47,13 @@ kotlin {
 
             }
         }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.bundles.shared.test)
+            }
+        }
+
         val androidMain by getting {
             dependencies {
                 api(libs.activity.compose)

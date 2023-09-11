@@ -1,6 +1,7 @@
 package com.rutubishi.fixtures
 
 import com.rutubishi.data.database.AppDbFactory
+import com.rutubishi.module
 import com.rutubishi.plugins.configureHTTP
 import com.rutubishi.plugins.configureRouting
 import com.rutubishi.plugins.configureSerialization
@@ -12,11 +13,13 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
+import org.koin.test.KoinTest
 
 abstract class AppTest {
 
     fun baseTestApp(block: suspend ApplicationTestBuilder.() -> Unit ) = testApplication {
             application {
+                dispose()
                 configureTestDI()
                 configureTestDB()
                 configureHTTP()

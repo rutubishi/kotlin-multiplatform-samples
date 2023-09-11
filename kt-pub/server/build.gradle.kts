@@ -17,6 +17,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(libs.bundles.ktor.server.tests)
+                implementation(libs.koin.test.junit5)
             }
         }
     }
