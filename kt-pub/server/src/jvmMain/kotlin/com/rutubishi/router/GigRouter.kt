@@ -33,7 +33,13 @@ fun Application.gigRouter(
         }
 
         get(AppRouter.showGigsLatest){
-
+            call.respond(
+                AppResponse(
+                    body = gigRepository
+                        .showLatestGigs()
+                        .map { it.toDto() }
+                )
+            )
         }
 
     }

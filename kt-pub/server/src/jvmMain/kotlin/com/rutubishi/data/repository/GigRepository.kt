@@ -12,6 +12,7 @@ interface GigRepository {
     suspend fun showGigs(): List<Gig>
     suspend fun searchGig(searchTerm: String): List<Gig>
     suspend fun addGig(gigRequest: GigRequest): Gig?
+    suspend fun showLatestGigs(latest: Int = 5): List<Gig>
 }
 
 class GigRepoImpl(
@@ -24,6 +25,7 @@ class GigRepoImpl(
         TODO("Not yet implemented")
     }
 
+    override suspend fun showLatestGigs(latest: Int): List<Gig> = gigDAO.showGigs(latest)
     override suspend fun addGig(gigRequest: GigRequest): Gig? {
         val employer = employerDAO.getEmployer(gigRequest.employerId)
         return if(employer == null)
@@ -46,4 +48,5 @@ class GigRepoImpl(
               gigDAO.addGig(gig)
             }
     }
+
 }
