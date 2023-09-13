@@ -12,11 +12,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ResponsesTest : AppTest() {
-    
-    @AfterTest
-    fun closeKoin(){
-        stopKoin()
-    }
 
     @Test
     fun `should show OK status`() = baseTestApp { client ->
