@@ -37,13 +37,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.materialIconsExtended)
+                api(compose.runtime)
+                api(compose.foundation)
+                api(compose.material3)
+                api(compose.materialIconsExtended)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
-                implementation(libs.kotlinx.serialization.json)
+                api(compose.components.resources)
+                api(libs.kotlinx.serialization.json)
 
             }
         }
@@ -72,7 +72,8 @@ kotlin {
         }
         val desktopMain by getting {
             dependencies {
-                implementation(compose.desktop.common)
+                dependsOn(commonMain)
+                implementation(compose.desktop.currentOs)
             }
         }
 
