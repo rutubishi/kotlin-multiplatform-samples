@@ -1,19 +1,18 @@
 package presentation.screens.fragments.employers
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import presentation.components.AppLoader
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 
@@ -47,6 +46,14 @@ fun EmployerList(
         )
 
         // Lazy Column goes here
+        Box(modifier = Modifier
+            .fillMaxSize()) {
+            AppLoader(
+                modifier = Modifier
+                    .align(Alignment.Center)
+            )
+        }
+
 
     }
 }
