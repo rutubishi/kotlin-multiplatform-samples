@@ -26,6 +26,7 @@ fun DesktopInput(
         value = value,
         onValueChange = onValueChange,
         placeholder = placeholder,
+        label = placeholder,
         trailingIcon = trailingIcon,
         leadingIcon = leadingIcon,
         minLines = minLines

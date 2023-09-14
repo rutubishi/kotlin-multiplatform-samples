@@ -1,3 +1,5 @@
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
@@ -10,7 +12,10 @@ fun main() = application {
         title = "kt-pub Admin",
         resizable = false,
         state = WindowState(
-            placement = WindowPlacement.Maximized
+            size = DpSize(
+                width = 1280.dp,
+                height = 720.dp
+            )
         )
     ) {
         AdminHome()
