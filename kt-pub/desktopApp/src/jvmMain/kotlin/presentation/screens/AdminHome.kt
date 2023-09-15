@@ -13,7 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import presentation.screens.fragments.employers.EmployerAddView
 import presentation.screens.fragments.employers.EmployerView
 import presentation.screens.fragments.gigs.GigView
+import presentation.screens.fragments.home.HomeView
 import presentation.theme.general_padding
 import presentation.theme.standard_icon_size
 
@@ -34,10 +35,12 @@ import presentation.theme.standard_icon_size
 fun AdminHome() {
 
     val menuOptions = arrayOf(
-        mapOf("title" to "Home", "icon" to Icons.Filled.Home),
-        mapOf("title" to "Gigs", "icon" to Icons.Filled.Work),
-        mapOf("title" to "Employers", "icon" to Icons.Filled.AccountCircle)
+        mapOf("title" to "Home", "icon" to Icons.Filled.Home, "screen" to AdminScreen.HomeScreen),
+        mapOf("title" to "Gigs", "icon" to Icons.Filled.Work, "screen" to AdminScreen.GigScreen),
+        mapOf("title" to "Employers", "icon" to Icons.Filled.AccountCircle, "screen" to AdminScreen.EmployerScreen)
     )
+
+    var appScreen: AdminScreen by remember { mutableStateOf(AdminScreen.HomeScreen) }
 
     Row(
         modifier = Modifier
@@ -60,9 +63,14 @@ fun AdminHome() {
                     menuOptions.forEach {
                         val icon: ImageVector by it
                         val title: String by it
+                        val screen: AdminScreen by it
                         NavItem(
                             title = title,
-                            icon = icon
+                            icon = icon,
+                            selectedScreen = screen,
+                            onSelectMenu = { adminScreen ->
+                                appScreen = adminScreen!!
+                            }
                         )
                     }
                 }
@@ -77,10 +85,12 @@ fun AdminHome() {
 
         }
 
-        // View employer
-        GigView(
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
+        // screens
+        when(appScreen){
+            is AdminScreen.HomeScreen -> HomeView()
+            is AdminScreen.EmployerScreen -> EmployerView()
+            is AdminScreen.GigScreen -> GigView()
+        }
 
     }
 
@@ -92,7 +102,8 @@ fun NavItem(
     modifier: Modifier = Modifier,
     title: String = "",
     icon: ImageVector = Icons.Filled.Home,
-    onSelectMenu: () -> Unit = {}
+    onSelectMenu: (AdminScreen?) -> Unit = {},
+    selectedScreen: AdminScreen? = null
 ) {
 
     Column(
@@ -103,7 +114,7 @@ fun NavItem(
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = rememberRipple(),
-                onClick = onSelectMenu
+                onClick = { onSelectMenu(selectedScreen) }
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

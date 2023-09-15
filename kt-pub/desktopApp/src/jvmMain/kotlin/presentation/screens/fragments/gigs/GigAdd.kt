@@ -22,7 +22,7 @@ fun GigAddView(
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(general_padding)
             .verticalScroll(rememberScrollState())
