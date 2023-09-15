@@ -3,8 +3,6 @@ package presentation.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import presentation.theme.half_padding
@@ -25,7 +23,6 @@ fun DesktopInput(
             .padding(half_padding),
         value = value,
         onValueChange = onValueChange,
-        placeholder = placeholder,
         label = placeholder,
         trailingIcon = trailingIcon,
         leadingIcon = leadingIcon,
