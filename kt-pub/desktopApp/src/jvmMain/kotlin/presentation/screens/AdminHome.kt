@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import presentation.screens.fragments.employers.EmployerAddView
 import presentation.screens.fragments.employers.EmployerView
+import presentation.screens.fragments.gigs.GigView
 import presentation.theme.general_padding
 import presentation.theme.standard_icon_size
 
@@ -77,7 +78,7 @@ fun AdminHome() {
         }
 
         // View employer
-        EmployerView(
+        GigView(
             modifier = Modifier.align(Alignment.CenterVertically)
         )
 
