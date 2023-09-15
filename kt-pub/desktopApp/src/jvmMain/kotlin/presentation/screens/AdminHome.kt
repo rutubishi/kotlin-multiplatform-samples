@@ -32,7 +32,9 @@ import presentation.theme.standard_icon_size
 
 @Preview
 @Composable
-fun AdminHome() {
+fun AdminHome(
+    closeRequest: () -> Unit = {}
+) {
 
     val menuOptions = arrayOf(
         mapOf("title" to "Home", "icon" to Icons.Filled.Home, "screen" to AdminScreen.HomeScreen),
@@ -41,6 +43,7 @@ fun AdminHome() {
     )
 
     var appScreen: AdminScreen by remember { mutableStateOf(AdminScreen.HomeScreen) }
+    var itemSelected: Int by remember { mutableStateOf(0) }
 
     Row(
         modifier = Modifier
@@ -60,24 +63,33 @@ fun AdminHome() {
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    menuOptions.forEach {
-                        val icon: ImageVector by it
-                        val title: String by it
-                        val screen: AdminScreen by it
+
+                    menuOptions.forEachIndexed { index, map ->
+
+                        val icon: ImageVector by map
+                        val title: String by map
+                        val screen: AdminScreen by map
+
                         NavItem(
                             title = title,
                             icon = icon,
                             selectedScreen = screen,
                             onSelectMenu = { adminScreen ->
                                 appScreen = adminScreen!!
-                            }
+                                itemSelected = index
+                            },
+                            selected = itemSelected == index
                         )
                     }
+
                 }
 
                 NavItem(
                     title = "Log Out",
-                    icon = Icons.Filled.Logout
+                    icon = Icons.Filled.Logout,
+                    onSelectMenu = {
+                        closeRequest()
+                    }
                 )
 
             }
@@ -103,7 +115,8 @@ fun NavItem(
     title: String = "",
     icon: ImageVector = Icons.Filled.Home,
     onSelectMenu: (AdminScreen?) -> Unit = {},
-    selectedScreen: AdminScreen? = null
+    selectedScreen: AdminScreen? = null,
+    selected: Boolean = false
 ) {
 
     Column(
@@ -114,7 +127,9 @@ fun NavItem(
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = rememberRipple(),
-                onClick = { onSelectMenu(selectedScreen) }
+                onClick = {
+                    onSelectMenu(selectedScreen)
+                }
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -122,13 +137,15 @@ fun NavItem(
             imageVector = icon,
             contentDescription = null,
             modifier = Modifier
-                .size(standard_icon_size / 2)
+                .size(standard_icon_size / 2),
+            tint = if(selected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onPrimaryContainer
         )
         Text(
             text = title,
             style = MaterialTheme.typography.labelMedium,
             fontWeight = FontWeight.SemiBold,
-            fontSize = TextUnit(value = 15f, TextUnitType.Sp)
+            fontSize = TextUnit(value = 15f, TextUnitType.Sp),
+            color = if(selected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onPrimaryContainer
         )
     }
 
