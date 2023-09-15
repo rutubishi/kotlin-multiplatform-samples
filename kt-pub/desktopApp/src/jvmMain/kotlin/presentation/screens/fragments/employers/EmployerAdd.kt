@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import presentation.components.AppError
+import presentation.components.AppErrorCard
 import presentation.components.AppLoader
 import presentation.components.DesktopInput
 import presentation.theme.general_padding
@@ -43,13 +45,13 @@ fun EmployerAddView(
             modifier = modifier,
             uiState = uiState,
             viewModel = viewModel,
-            error = addEmployerState.data
+            error = addEmployerState.message
         )
         is ScreenState.Loading -> AppLoader(modifier = modifier)
         else -> EmployerAddViewContent(
             modifier = modifier,
             uiState = uiState,
-            viewModel = viewModel
+            viewModel = viewModel,
         )
     }
 
@@ -65,6 +67,9 @@ fun EmployerAddViewContent(
     viewModel: EmployerScreenModel,
 ) {
 
+    var companyDropdownMenuShown by remember { mutableStateOf(false) }
+    var showError: Boolean by remember { mutableStateOf(!error.isNullOrBlank()) }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -72,14 +77,14 @@ fun EmployerAddViewContent(
             .verticalScroll(rememberScrollState()),
     ) {
 
-        var companyDropdownMenuShown by remember { mutableStateOf(false) }
-        var companySize by remember { mutableStateOf("") }
 
         Text(
             text = "Add Employer",
             style = MaterialTheme.typography.titleLarge,
             fontSize = TextUnit(value = 20f, TextUnitType.Sp)
         )
+
+        if (showError) AppErrorCard(message = error ?: "Something wrong happened")
 
         DesktopInput(
             value = uiState.companyName ?: "",
@@ -152,7 +157,9 @@ fun EmployerAddViewContent(
         )
 
         Button(
-            onClick = {viewModel.handleEmployerAddActions(EmployerAddActions.AddEmployer)},
+            onClick = {
+                viewModel.handleEmployerAddActions(EmployerAddActions.AddEmployer)
+                showError = !uiState.valid() },
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(top = half_padding),

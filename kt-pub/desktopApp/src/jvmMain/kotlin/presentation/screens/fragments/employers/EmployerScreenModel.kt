@@ -31,10 +31,8 @@ class EmployerScreenModel(
                 println(uiState.value)
                 if (uiState.value.valid()){
                     submitEmployerForm()
-                    println("Valid employer form")
                 }
                 else{
-                    println("Not so valid employer form")
                     asyncWorkScope.launch {
                         _addEmployerState.emit(
                             ScreenState.Error(message = "You need to fill in all the fields!")

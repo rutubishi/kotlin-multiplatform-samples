@@ -15,7 +15,7 @@ fun main() = application {
         state = WindowState(
             size = DpSize(
                 width = 1280.dp,
-                height = 720.dp
+                height = 1080.dp
             )
         )
     ) {
