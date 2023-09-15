@@ -1,6 +1,4 @@
-package com.rutubishi.router
-
-import kotlinx.serialization.Serializable
+package data.network
 
 object AppRouter {
     /**

@@ -22,7 +22,7 @@ fun DesktopInput(
             .fillMaxWidth()
             .padding(half_padding),
         value = value,
-        onValueChange = onValueChange,
+        onValueChange = { onValueChange(it) },
         label = placeholder,
         trailingIcon = trailingIcon,
         leadingIcon = leadingIcon,

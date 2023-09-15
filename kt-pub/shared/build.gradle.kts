@@ -59,12 +59,16 @@ kotlin {
                 api(libs.activity.compose)
                 api(libs.appcompat)
                 api(libs.core.ktx)
+                api(libs.ktor.client.okhttp)
             }
         }
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -74,6 +78,7 @@ kotlin {
             dependencies {
                 dependsOn(commonMain)
                 implementation(compose.desktop.currentOs)
+                api(libs.ktor.client.cio)
             }
         }
 

@@ -3,6 +3,8 @@ package presentation.screens.fragments.employers
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -21,18 +23,53 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import presentation.components.AppLoader
 import presentation.components.DesktopInput
 import presentation.theme.general_padding
 import presentation.theme.half_padding
+import presentation.uimodel.ScreenState
 
 @Composable
 fun EmployerAddView(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: EmployerScreenModel,
 ) {
+
+    val uiState: EmployerAddUiState by viewModel.uiState.collectAsState(initial = EmployerAddUiState())
+    val addEmployerState: ScreenState<String> by viewModel.addEmployerState.collectAsState()
+
+    when(addEmployerState){
+        is ScreenState.Error -> EmployerAddViewContent(
+            modifier = modifier,
+            uiState = uiState,
+            viewModel = viewModel,
+            error = addEmployerState.data
+        )
+        is ScreenState.Loading -> AppLoader(modifier = modifier)
+        else -> EmployerAddViewContent(
+            modifier = modifier,
+            uiState = uiState,
+            viewModel = viewModel
+        )
+    }
+
+
+
+}
+
+@Composable
+fun EmployerAddViewContent(
+    error: String? = null,
+    modifier: Modifier,
+    uiState: EmployerAddUiState,
+    viewModel: EmployerScreenModel,
+) {
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(vertical = general_padding, horizontal = general_padding),
+            .padding(vertical = general_padding, horizontal = general_padding)
+            .verticalScroll(rememberScrollState()),
     ) {
 
         var companyDropdownMenuShown by remember { mutableStateOf(false) }
@@ -45,32 +82,42 @@ fun EmployerAddView(
         )
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.companyName ?: "",
+            onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.CompanyNameChange(it)) },
+            placeholder = {
+                Text(text = "Company Name")
+            }
+        )
+
+        DesktopInput(
+            value = uiState.logo ?: "",
+            onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.LogoChange(it)) },
             placeholder = {
                 Text(text = "Logo URL")
             }
         )
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.webPage ?: "",
+            onValueChange = {
+                viewModel.handleEmployerAddActions(actions = EmployerAddActions.WebPageChange(it))
+            },
             placeholder = {
                 Text(text = "Webpage")
             }
         )
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.industry ?: "",
+            onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.IndustryChange(it)) },
             placeholder = {
                 Text(text = "Industry (Education, Hospitality etc.)")
             }
         )
 
         DesktopInput(
-            value = companySize,
-            onValueChange = {},
+            value = uiState.companySize ?: "",
+            onValueChange = { viewModel.handleEmployerAddActions(EmployerAddActions.CompanySizeChange(it)) },
             placeholder = {
                 Text(text = "Company Size")
             },
@@ -91,13 +138,13 @@ fun EmployerAddView(
             modifier = Modifier.align(Alignment.End),
             isExpanded = companyDropdownMenuShown
         ){ itemSelected ->
-            companySize = itemSelected
             companyDropdownMenuShown = false
+            viewModel.handleEmployerAddActions(EmployerAddActions.CompanySizeChange(itemSelected))
         }
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.description ?: "",
+            onValueChange = { viewModel.handleEmployerAddActions(EmployerAddActions.DescriptionChange(it)) },
             placeholder = {
                 Text(text = "Employer Details")
             },
@@ -105,7 +152,7 @@ fun EmployerAddView(
         )
 
         Button(
-            onClick = {},
+            onClick = {viewModel.handleEmployerAddActions(EmployerAddActions.AddEmployer)},
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(top = half_padding),
@@ -123,6 +170,7 @@ fun EmployerAddView(
         }
 
     }
+
 }
 
 @Composable

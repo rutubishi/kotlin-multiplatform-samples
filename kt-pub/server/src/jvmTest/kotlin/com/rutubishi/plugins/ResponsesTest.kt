@@ -3,11 +3,9 @@ package com.rutubishi.plugins
 import com.rutubishi.fixtures.AppTest
 import com.rutubishi.fixtures.employerRequestFixture
 import com.rutubishi.fixtures.gigRequestFixture
-import com.rutubishi.router.AppRouter
+import data.network.AppRouter
 import io.ktor.client.request.*
 import io.ktor.http.*
-import org.koin.core.context.stopKoin
-import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

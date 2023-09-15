@@ -2,6 +2,8 @@ package com.rutubishi.router
 
 import com.rutubishi.data.repository.EmployerRepository
 import data.network.AppResponse
+import data.network.AppRouter
+import data.network.EmployerDto
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -15,7 +17,7 @@ fun Application.employerRouter(
 
         post(AppRouter.createEmployer) {
             val employer = employerRepository
-                .addEmployer(call.receive())
+                .addEmployer(call.receive<EmployerDto>().copy())
             call.respond(status = HttpStatusCode.Created ,message = AppResponse(body = employer?.toDto()))
         }
 

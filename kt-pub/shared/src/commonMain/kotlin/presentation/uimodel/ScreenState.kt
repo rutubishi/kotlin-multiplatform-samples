@@ -10,4 +10,5 @@ sealed class ScreenState <T>(
     class Success<T>(data: T): ScreenState<T>(data = data)
     class Loading<T>() : ScreenState<T>()
     class Error<T>(message: String): ScreenState<T>(message = message)
+    class Idle<T>(data: T) : ScreenState<T>(data = data)
 }

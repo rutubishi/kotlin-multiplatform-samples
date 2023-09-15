@@ -12,6 +12,9 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(project(":shared"))
+                implementation(libs.ktor.client.logging.jvm)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json.jvm)
             }
         }
     }
