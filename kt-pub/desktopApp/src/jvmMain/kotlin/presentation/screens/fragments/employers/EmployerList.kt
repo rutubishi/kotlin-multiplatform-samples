@@ -9,6 +9,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCard
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Person4
 import androidx.compose.material.icons.filled.ScreenSearchDesktop
 import androidx.compose.material3.Card
@@ -23,8 +25,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.seiko.imageloader.model.ImageRequest
+import com.seiko.imageloader.rememberImagePainter
 import data.network.EmployerDto
 import presentation.components.AppLoader
+import presentation.components.DesktopImage
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 import presentation.theme.standard_icon_size
@@ -123,21 +128,29 @@ fun EmployerSearchResult(
 ) {
 
     ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(standard_icon_size + standard_icon_size/2),
     ) {
 
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(half_padding),
         ) {
 
-            Icon(
-                imageVector = Icons.Default.Person4,
+            DesktopImage(
+                painter = rememberImagePainter(employer.logo),
                 contentDescription = null,
-                modifier = Modifier.size(standard_icon_size))
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(standard_icon_size)
+            )
+
             Column(
-                modifier = Modifier.fillMaxSize().padding(start = general_padding),
+                modifier = Modifier.weight(4f)
+                    .fillMaxHeight()
+                    .padding(start = general_padding),
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -150,6 +163,32 @@ fun EmployerSearchResult(
                     text = employer.industry,
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(top = 8.dp)
+                )
+
+            }
+
+            Row(
+                modifier = Modifier
+                    .weight(2f)
+                    .fillMaxHeight(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    modifier = Modifier
+                        .weight(1f)
+                        .size(standard_icon_size/2),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                Icon(
+                    imageVector = Icons.Default.AddCard,
+                    modifier = Modifier
+                        .weight(1f)
+                        .size(standard_icon_size/2),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.tertiary
                 )
 
             }

@@ -20,7 +20,7 @@ data class EmployerAddUiState(
 
     fun getEmployerDto() = EmployerDto(
         title = companyName!!,
-        logo = logo!!,
+        logo = logo!!.replace("\n",""),
         description = description!!,
         webPage = webPage!!,
         industry = industry!!
