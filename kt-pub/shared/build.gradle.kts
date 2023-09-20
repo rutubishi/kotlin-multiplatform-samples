@@ -44,6 +44,7 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 api(compose.components.resources)
                 api(libs.kotlinx.serialization.json)
+                api(libs.image.loader)
 
             }
         }

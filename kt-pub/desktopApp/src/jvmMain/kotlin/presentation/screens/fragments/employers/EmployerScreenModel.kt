@@ -13,6 +13,11 @@ import presentation.uimodel.ScreenState
 class EmployerScreenModel(
     private val employerRepository: EmployerRepository
 ) : ScreenModel {
+
+    init {
+        loadEmployers()
+    }
+
     override val asyncWorkScope: CoroutineScope
         get() = CoroutineScope(Dispatchers.IO)
     override val uiWorkScope: CoroutineScope
@@ -28,10 +33,9 @@ class EmployerScreenModel(
 
     val searchUiState: MutableStateFlow<EmployerSearchUiState> =
         MutableStateFlow(EmployerSearchUiState())
-    private val _searchState: MutableStateFlow<ScreenState<String>> =
+    private val _searchState: MutableStateFlow<ScreenState<String?>> =
         MutableStateFlow(ScreenState.Idle(data = "No action needed"))
-    val searchState: StateFlow<ScreenState<String>> = _searchState
-
+    val searchState: StateFlow<ScreenState<String?>> = _searchState
 
     fun handleEmployerAddActions(actions: EmployerAddActions) {
         when(actions){
@@ -92,6 +96,7 @@ class EmployerScreenModel(
             EmployerSearchActions.SubmitSearch -> {
                 _searchState.emit(ScreenState.Loading())
                 searchUiState.update {
+                    loadEmployers(searchTerm = it.searchTerm)
                     it.copy(searchTerm = "")
                 }
             }
@@ -108,10 +113,23 @@ class EmployerScreenModel(
         if(employer.body != null){
             uiState.emit(EmployerAddUiState())
             _addEmployerState.emit(ScreenState.Success(data = employer.status))
+            loadEmployers()
         }else{
             uiState.emit(current)
             _addEmployerState.emit(ScreenState.Error(message = employer.status))
         }
+    }
+
+    private fun loadEmployers(searchTerm: String? = null) = launchInIO {
+//        _searchState.emit(value = ScreenState.Loading(data = null))
+        val employers = if(searchTerm == null)
+            employerRepository.showEmployers()
+        else
+            employerRepository.showEmployers()
+        searchUiState.update {
+            it.copy(searchResults = employers.body)
+        }
+        _searchState.emit(value = ScreenState.Success(data = "Data Loaded"))
     }
 
 }

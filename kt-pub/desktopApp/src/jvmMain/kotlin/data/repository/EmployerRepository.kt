@@ -9,6 +9,7 @@ import io.ktor.client.request.*
 
 interface EmployerRepository {
     suspend fun createEmployer(employer: EmployerDto): AppResponse<EmployerDto?>
+    suspend fun showEmployers(): AppResponse<List<EmployerDto>>
 }
 
 class EmployerRepoImpl(
@@ -21,6 +22,14 @@ class EmployerRepoImpl(
             }.body<AppResponse<EmployerDto?>>()
         }catch (e: Exception){
             AppResponse(code = 500, status = e.message!!, body = null)
+        }
+    }
+
+    override suspend fun showEmployers(): AppResponse<List<EmployerDto>> {
+        return try {
+            client.get(AppRouter.showEmployers).body<AppResponse<List<EmployerDto>>>()
+        }catch (e: Exception){
+            AppResponse(code = 500, status = e.message!!, body = emptyList())
         }
     }
 }

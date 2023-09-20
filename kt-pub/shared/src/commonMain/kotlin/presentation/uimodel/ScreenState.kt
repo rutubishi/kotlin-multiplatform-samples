@@ -8,7 +8,7 @@ sealed class ScreenState <T>(
     val data: T? = null
 ){
     class Success<T>(data: T): ScreenState<T>(data = data)
-    class Loading<T>() : ScreenState<T>()
+    class Loading<T>(data: T? = null) : ScreenState<T>(data = data)
     class Error<T>(message: String): ScreenState<T>(message = message)
     class Idle<T>(data: T) : ScreenState<T>(data = data)
 }
