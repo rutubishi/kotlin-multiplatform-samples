@@ -15,6 +15,8 @@ class EmployerScreenModel(
 ) : ScreenModel {
     override val asyncWorkScope: CoroutineScope
         get() = CoroutineScope(Dispatchers.IO)
+    override val uiWorkScope: CoroutineScope
+        get() = CoroutineScope(Dispatchers.Main)
 
     val uiState: MutableStateFlow<EmployerAddUiState> =
         MutableStateFlow(EmployerAddUiState())
@@ -23,6 +25,12 @@ class EmployerScreenModel(
         MutableStateFlow(ScreenState.Idle(data = "No action needed"))
     val addEmployerState: StateFlow<ScreenState<String>> = _addEmployerState
 
+
+    val searchUiState: MutableStateFlow<EmployerSearchUiState> =
+        MutableStateFlow(EmployerSearchUiState())
+    private val _searchState: MutableStateFlow<ScreenState<String>> =
+        MutableStateFlow(ScreenState.Idle(data = "No action needed"))
+    val searchState: StateFlow<ScreenState<String>> = _searchState
 
 
     fun handleEmployerAddActions(actions: EmployerAddActions) {
@@ -74,9 +82,25 @@ class EmployerScreenModel(
         }
     }
 
+    fun handleSearchActions(actions: EmployerSearchActions) = launchInIO {
+        when(actions){
+            is EmployerSearchActions.SearchChange -> {
+                searchUiState.update {
+                    it.copy(searchTerm = actions.searchTerm)
+                }
+            }
+            EmployerSearchActions.SubmitSearch -> {
+                _searchState.emit(ScreenState.Loading())
+                searchUiState.update {
+                    it.copy(searchTerm = "")
+                }
+            }
+        }
+    }
+
     private fun getCurrentUiState(): EmployerAddUiState = uiState.value
 
-    private fun submitEmployerForm() = launchInModel {
+    private fun submitEmployerForm() = launchInIO {
         val current = getCurrentUiState()
         _addEmployerState.emit(value = ScreenState.Loading())
         val employer = employerRepository

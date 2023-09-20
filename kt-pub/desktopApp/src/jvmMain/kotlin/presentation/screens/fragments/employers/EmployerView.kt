@@ -27,7 +27,8 @@ fun EmployerView(
         )
         EmployerList(
             modifier = Modifier
-                .weight(1f)
+                .weight(1f),
+            viewModel = employerScreenModel
         )
     }
 
