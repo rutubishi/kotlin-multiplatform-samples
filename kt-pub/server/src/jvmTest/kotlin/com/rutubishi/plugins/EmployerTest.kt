@@ -14,7 +14,14 @@ class EmployerTest : AppTest() {
     @Test
     fun `should create, get, update and delete a new employer`() = baseTestApp { client ->
         client
-            .post(AppRouter.createEmployer) { configureTestRequest(employerRequestFixture) }
+            .post(AppRouter.createEmployer) { configureTestRequest(employerRequestFixture) }.apply {
+                assertCreatedStatus()
+            }
+        client.get(AppRouter.showEmployers)
+            .apply {
+                assertOkStatus()
+                assertEquals(body<AppResponse<List<EmployerDto>>>().body, listOf(employerRequestFixture.copy(id = 1L)))
+            }
         client.get(AppRouter.BASE_EMPLOYER + "1").apply {
             assertOkStatus()
             assertEquals(body<AppResponse<EmployerDto?>>().body, employerRequestFixture.copy(id = 1L))
