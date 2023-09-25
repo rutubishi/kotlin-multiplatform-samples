@@ -5,9 +5,11 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import presentation.screens.AdminHome
+import presentation.screens.fragments.AdminScreenModel
 import kotlin.system.exitProcess
 
 fun main() = application {
+    val screenModel = AdminScreenModel()
     Window(
         onCloseRequest = ::exitApplication,
         title = "kt-pub Admin",
@@ -22,7 +24,8 @@ fun main() = application {
         AdminHome(
             closeRequest = {
                 exitProcess(0)
-            }
+            },
+            adminScreenModel = screenModel
         )
     }
 }

@@ -1,7 +1,7 @@
 package presentation.screens
 
-sealed class AdminScreen {
+sealed class AdminScreen(param: String? = null) {
     data object EmployerScreen : AdminScreen()
-    data object GigScreen : AdminScreen()
+    data class GigScreen(val param: String = "default") : AdminScreen(param = param)
     data object HomeScreen : AdminScreen()
 }

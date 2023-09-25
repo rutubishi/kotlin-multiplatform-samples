@@ -23,6 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import presentation.screens.fragments.AdminNavigationActions
+import presentation.screens.fragments.AdminScreenModel
+import presentation.screens.fragments.AdminUiState
 import presentation.screens.fragments.employers.EmployerAddView
 import presentation.screens.fragments.employers.EmployerView
 import presentation.screens.fragments.gigs.GigView
@@ -33,16 +36,15 @@ import presentation.theme.standard_icon_size
 @Preview
 @Composable
 fun AdminHome(
-    closeRequest: () -> Unit = {}
+    closeRequest: () -> Unit = {},
+    adminScreenModel: AdminScreenModel = AdminScreenModel()
 ) {
-
+    val screenUiState: AdminUiState by adminScreenModel.currentPage.collectAsState()
     val menuOptions = arrayOf(
         mapOf("title" to "Home", "icon" to Icons.Filled.Home, "screen" to AdminScreen.HomeScreen),
-        mapOf("title" to "Gigs", "icon" to Icons.Filled.Work, "screen" to AdminScreen.GigScreen),
+        mapOf("title" to "Gigs", "icon" to Icons.Filled.Work, "screen" to AdminScreen.GigScreen()),
         mapOf("title" to "Employers", "icon" to Icons.Filled.AccountCircle, "screen" to AdminScreen.EmployerScreen)
     )
-
-    var appScreen: AdminScreen by remember { mutableStateOf(AdminScreen.HomeScreen) }
     var itemSelected: Int by remember { mutableStateOf(0) }
 
     Row(
@@ -75,8 +77,16 @@ fun AdminHome(
                             icon = icon,
                             selectedScreen = screen,
                             onSelectMenu = { adminScreen ->
-                                appScreen = adminScreen!!
+                                println("Screen: $adminScreen")
                                 itemSelected = index
+                                adminScreenModel.handleNavigation(
+                                    actions = when(adminScreen){
+                                        AdminScreen.EmployerScreen -> AdminNavigationActions.NavigateToEmployer
+                                        is AdminScreen.GigScreen -> AdminNavigationActions.NavigateToGig(0L)
+                                        AdminScreen.HomeScreen -> AdminNavigationActions.NavigateToHome
+                                        null -> AdminNavigationActions.NavigateToHome
+                                    }
+                                )
                             },
                             selected = itemSelected == index
                         )
@@ -98,7 +108,7 @@ fun AdminHome(
         }
 
         // screens
-        when(appScreen){
+        when(screenUiState.currentScreen){
             is AdminScreen.HomeScreen -> HomeView()
             is AdminScreen.EmployerScreen -> EmployerView()
             is AdminScreen.GigScreen -> GigView()
