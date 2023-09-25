@@ -22,7 +22,18 @@ fun Application.employerRouter(
         }
 
         get(AppRouter.showEmployers) {
-            call.respond(AppResponse(body = employerRepository.searchEmployer().map { it.toDto() }))
+            call.respond(
+                AppResponse(
+                    body = employerRepository.searchEmployer().map { it.toDto() })
+            )
+        }
+
+        get(AppRouter.getEmployer){
+            call.respond(
+                AppResponse(
+                    body = employerRepository.getEmployer(call.parameters["id"]?.toLong()!!)
+                )
+            )
         }
 
     }

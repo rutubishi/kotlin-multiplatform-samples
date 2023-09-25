@@ -18,9 +18,9 @@ val gigRequestFixture = GigRequest(
 
 
 val employerRequestFixture = EmployerDto(
-    title = "",
-    logo = "",
-    description = "",
-    webPage = "",
-    industry = ""
+    title = "kt-pub",
+    logo = "https://logo.com",
+    description = "Kt pub here",
+    webPage = "https://kt-pub.com",
+    industry = "technology"
 )

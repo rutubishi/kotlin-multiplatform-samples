@@ -12,8 +12,9 @@ object AppRouter {
     /**
     * Employer Routes
      * */
-    val createEmployer = "/employer/add"
-    val getEmployer = "/employer/{id}"
-    val showEmployers = "/employer/all"
+    const val BASE_EMPLOYER = "/employer/"
+    const val createEmployer = "/employer/add"
+    const val getEmployer = "/employer/{id}"
+    const val showEmployers = "/employer/all"
 
 }

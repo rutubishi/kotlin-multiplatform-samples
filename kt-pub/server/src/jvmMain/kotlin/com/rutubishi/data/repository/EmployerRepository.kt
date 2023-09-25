@@ -6,7 +6,7 @@ import data.network.EmployerDto
 
 interface EmployerRepository {
     suspend fun searchEmployer(searchTerm: String? = null): List<Employer>
-    suspend fun getEmployer(id: Long): Employer?
+    suspend fun getEmployer(id: Long): EmployerDto?
     suspend fun addEmployer(employerDto: EmployerDto): Employer?
 }
 
@@ -21,8 +21,8 @@ class EmployerRepoImpl(
     }
 
 
-    override suspend fun getEmployer(id: Long): Employer? =
-        employerDAO.getEmployer(id)
+    override suspend fun getEmployer(id: Long): EmployerDto? =
+        employerDAO.getEmployer(id)?.toDto()
 
     override suspend fun addEmployer(employerDto: EmployerDto): Employer? {
         return with(employerDto){
