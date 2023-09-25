@@ -7,13 +7,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import data.network.KtPubAPI
 import data.repository.EmployerRepoImpl
+import presentation.screens.AdminScreenModel
 
 @Composable
 fun EmployerView(
     modifier: Modifier = Modifier,
     employerScreenModel: EmployerScreenModel = EmployerScreenModel(
         employerRepository = EmployerRepoImpl(client = KtPubAPI.client)
-    )
+    ),
+    adminScreenModel: AdminScreenModel
 ) {
 
     Row(
@@ -28,7 +30,8 @@ fun EmployerView(
         EmployerList(
             modifier = Modifier
                 .weight(1f),
-            viewModel = employerScreenModel
+            viewModel = employerScreenModel,
+            adminScreenModel
         )
     }
 

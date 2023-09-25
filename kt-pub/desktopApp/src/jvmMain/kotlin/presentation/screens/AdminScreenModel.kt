@@ -1,10 +1,9 @@
-package presentation.screens.fragments
+package presentation.screens
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import presentation.screens.AdminScreen
 import presentation.uimodel.ScreenModel
 
 class AdminScreenModel : ScreenModel {

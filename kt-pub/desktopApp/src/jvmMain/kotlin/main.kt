@@ -1,11 +1,10 @@
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import presentation.screens.AdminHome
-import presentation.screens.fragments.AdminScreenModel
+import presentation.screens.AdminScreenModel
 import kotlin.system.exitProcess
 
 fun main() = application {

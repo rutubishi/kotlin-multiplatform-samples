@@ -16,17 +16,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import presentation.screens.fragments.AdminNavigationActions
-import presentation.screens.fragments.AdminScreenModel
-import presentation.screens.fragments.AdminUiState
-import presentation.screens.fragments.employers.EmployerAddView
 import presentation.screens.fragments.employers.EmployerView
 import presentation.screens.fragments.gigs.GigView
 import presentation.screens.fragments.home.HomeView
@@ -110,7 +105,7 @@ fun AdminHome(
         // screens
         when(screenUiState.currentScreen){
             is AdminScreen.HomeScreen -> HomeView()
-            is AdminScreen.EmployerScreen -> EmployerView()
+            is AdminScreen.EmployerScreen -> EmployerView(adminScreenModel = adminScreenModel)
             is AdminScreen.GigScreen -> GigView()
         }
 

@@ -30,6 +30,8 @@ import com.seiko.imageloader.rememberImagePainter
 import data.network.EmployerDto
 import presentation.components.AppLoader
 import presentation.components.DesktopImage
+import presentation.screens.AdminNavigationActions
+import presentation.screens.AdminScreenModel
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 import presentation.theme.standard_icon_size
@@ -40,6 +42,7 @@ import presentation.uimodel.ScreenState
 fun EmployerList(
     modifier: Modifier = Modifier,
     viewModel: EmployerScreenModel,
+    adminScreenModel: AdminScreenModel,
 ) {
 
     val uiState: EmployerSearchUiState by viewModel.searchUiState.collectAsState()
@@ -86,7 +89,7 @@ fun EmployerList(
             is ScreenState.Idle -> EmployerLoader()
             is ScreenState.Loading -> EmployerLoader()
             is ScreenState.Success -> {
-                EmployerSearchList(uiState.searchResults)
+                EmployerSearchList(uiState.searchResults, adminScreenModel)
             }
         }
 
@@ -106,7 +109,8 @@ fun EmployerLoader() {
 
 @Composable
 fun EmployerSearchList(
-    employers: List<EmployerDto>
+    employers: List<EmployerDto>,
+    adminScreenModel: AdminScreenModel,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -116,7 +120,7 @@ fun EmployerSearchList(
     ) {
 
         items(employers){
-            EmployerSearchResult(employer = it)
+            EmployerSearchResult(employer = it, adminScreenModel)
         }
 
     }
@@ -124,7 +128,8 @@ fun EmployerSearchList(
 
 @Composable
 fun EmployerSearchResult(
-    employer: EmployerDto
+    employer: EmployerDto,
+    adminScreenModel: AdminScreenModel
 ) {
 
     ElevatedCard(
@@ -186,7 +191,8 @@ fun EmployerSearchResult(
                     imageVector = Icons.Default.AddCard,
                     modifier = Modifier
                         .weight(1f)
-                        .size(standard_icon_size/2),
+                        .size(standard_icon_size/2)
+                        .clickable { adminScreenModel.handleNavigation(AdminNavigationActions.NavigateToGig(employer.id)) },
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.tertiary
                 )
