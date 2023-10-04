@@ -23,7 +23,7 @@ class AdminScreenModel : ScreenModel {
             }
             is AdminNavigationActions.NavigateToGig -> {
                 currentPage.update {
-                    AdminUiState(currentScreen = AdminScreen.GigScreen(param = actions.employerId.toString()))
+                    AdminUiState(currentScreen = AdminScreen.GigScreen(employerId = actions.employerId))
                 }
             }
             AdminNavigationActions.NavigateToHome -> {

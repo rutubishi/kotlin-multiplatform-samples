@@ -60,7 +60,7 @@ fun AdminHome(
             ) {
                 Column {
 
-                    menuOptions.forEachIndexed { index, map ->
+                    menuOptions.forEachIndexed { _, map ->
 
                         val icon: ImageVector by map
                         val title: String by map
@@ -103,7 +103,7 @@ fun AdminHome(
         when(screenUiState.currentScreen){
             is AdminScreen.HomeScreen -> HomeView()
             is AdminScreen.EmployerScreen -> EmployerView(adminScreenModel = adminScreenModel)
-            is AdminScreen.GigScreen -> GigView()
+            is AdminScreen.GigScreen -> GigView(employerId = (screenUiState.currentScreen as AdminScreen.GigScreen).employerId)
         }
 
     }

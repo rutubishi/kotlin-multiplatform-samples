@@ -18,7 +18,10 @@ import presentation.theme.half_padding
 
 @Composable
 fun GigAddView(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    employerId: Long = 0L,
+    employerName: String? = null,
+    screenModel: GigScreenModel,
 ) {
 
     Column(
@@ -50,7 +53,7 @@ fun GigAddView(
             )
 
             DesktopInput(
-                value = "",
+                value = employerName ?: "",
                 onValueChange = {},
                 placeholder = {
                     Text(text = "Employer")
