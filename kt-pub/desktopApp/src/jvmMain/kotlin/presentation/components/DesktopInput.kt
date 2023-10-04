@@ -15,7 +15,8 @@ fun DesktopInput(
     placeholder: @Composable () -> Unit = {},
     trailingIcon: @Composable () -> Unit = {},
     leadingIcon: (@Composable () -> Unit)? = null,
-    minLines: Int = 1
+    minLines: Int = 1,
+    enabled: Boolean = true
 ) {
     OutlinedTextField(
         modifier = modifier
@@ -26,6 +27,7 @@ fun DesktopInput(
         label = placeholder,
         trailingIcon = trailingIcon,
         leadingIcon = leadingIcon,
-        minLines = minLines
+        minLines = minLines,
+        enabled = enabled
     )
 }

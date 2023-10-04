@@ -8,6 +8,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
@@ -23,6 +25,8 @@ fun GigAddView(
     employerName: String? = null,
     screenModel: GigScreenModel,
 ) {
+
+    val uiState: GigAddUiState by screenModel.uiState.collectAsState()
 
     Column(
         modifier = modifier
@@ -42,8 +46,10 @@ fun GigAddView(
                 .fillMaxWidth()
         ) {
             DesktopInput(
-                value = "",
-                onValueChange = {},
+                value = uiState.roleName ?: "",
+                onValueChange = {
+                    screenModel.handleGigAddActions(GigAddActions.TitleChange(it))
+                },
                 placeholder = {
                     Text(text = "Role Name")
                 },
@@ -60,7 +66,8 @@ fun GigAddView(
                 },
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = half_padding)
+                    .padding(start = half_padding),
+                enabled = false
             )
         }
 
@@ -70,8 +77,10 @@ fun GigAddView(
         ) {
 
             DesktopInput(
-                value = "",
-                onValueChange = {},
+                value = uiState.roleType ?: "",
+                onValueChange = {
+                    screenModel.handleGigAddActions(GigAddActions.RoleTypeChange(it))
+                },
                 placeholder = {
                     Text(text = "Role Type (full-time, part-time)")
                 },
@@ -81,8 +90,10 @@ fun GigAddView(
             )
 
             DesktopInput(
-                value = "",
-                onValueChange = {},
+                value = uiState.roleLocation ?: "",
+                onValueChange = {
+                    screenModel.handleGigAddActions(GigAddActions.LocTypeChange(it))
+                },
                 placeholder = {
                     Text(text = "Role Location (Hybrid, Remote, On-Site)")
                 },
@@ -99,8 +110,10 @@ fun GigAddView(
         ) {
 
             DesktopInput(
-                value = "",
-                onValueChange = {},
+                value = uiState.salaryRange ?: "",
+                onValueChange = {
+                    screenModel.handleGigAddActions(GigAddActions.SalaryRangeChange(it))
+                },
                 placeholder = {
                     Text(text = "Salary Range")
                 },
@@ -110,8 +123,10 @@ fun GigAddView(
             )
 
             DesktopInput(
-                value = "",
-                onValueChange = {},
+                value = uiState.location ?: "",
+                onValueChange = {
+                    screenModel.handleGigAddActions(GigAddActions.LocationChange(it))
+                },
                 placeholder = {
                     Text(text = "Location")
                 },
@@ -123,8 +138,10 @@ fun GigAddView(
         }
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.contractType ?: "",
+            onValueChange = {
+                screenModel.handleGigAddActions(GigAddActions.ContractTypeChange(it))
+            },
             placeholder = {
                 Text(text = "Contract Type (Permanent, Contract)")
             }
@@ -132,8 +149,10 @@ fun GigAddView(
 
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.roleDesc ?: "",
+            onValueChange = {
+                screenModel.handleGigAddActions(GigAddActions.DescriptionChange(it))
+            },
             placeholder = {
                 Text(text = "Role Description")
             },
@@ -141,8 +160,10 @@ fun GigAddView(
         )
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.roleRequirement ?: "",
+            onValueChange = {
+                screenModel.handleGigAddActions(GigAddActions.RequirementChange(it))
+            },
             placeholder = {
                 Text(text = "Role Requirements")
             },
@@ -150,8 +171,10 @@ fun GigAddView(
         )
 
         DesktopInput(
-            value = "",
-            onValueChange = {},
+            value = uiState.roleBenefits ?: "",
+            onValueChange = {
+                screenModel.handleGigAddActions(GigAddActions.BenefitsChange(it))
+            },
             placeholder = {
                 Text(text = "Benefits / Perks")
             },
@@ -159,7 +182,9 @@ fun GigAddView(
         )
 
         Button(
-            onClick = {},
+            onClick = {
+                screenModel.handleGigAddActions(GigAddActions.SubmitGig(employerId))
+            },
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(top = half_padding),

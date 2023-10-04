@@ -40,7 +40,6 @@ class EmployerScreenModel(
     fun handleEmployerAddActions(actions: EmployerAddActions) {
         when(actions){
             is EmployerAddActions.AddEmployer -> {
-                println(uiState.value)
                 if (uiState.value.valid()){
                     submitEmployerForm()
                 }

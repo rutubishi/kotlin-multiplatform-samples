@@ -22,14 +22,14 @@ data class GigAddUiState(
 ){
     fun valid(): Boolean =
         !roleName.isNullOrEmpty()
-                && !roleTypes.contains(roleType?.lowercase())
+                && roleTypes.contains(roleType?.lowercase())
                 && !salaryRange.isNullOrEmpty()
-                && !employer.isNullOrEmpty()
-                && !locTypes.contains(roleLocation)
+                && locTypes.contains(roleLocation)
                 && !location.isNullOrEmpty()
                 && !roleDesc.isNullOrEmpty()
                 && !roleRequirement.isNullOrEmpty()
-                && !contractTypes.contains(contractType?.lowercase())
+                && contractTypes.contains(contractType?.lowercase())
+                && employerId != 0L
 
     fun getGigRequest() = GigRequest(
         title = roleName!!,
@@ -55,4 +55,5 @@ sealed class GigAddActions {
     data class LocTypeChange(val locType: String): GigAddActions()
     data class ContractTypeChange(val contractType: String): GigAddActions()
     data class SalaryRangeChange(val salaryRange: String): GigAddActions()
+    data class SubmitGig(val employerId: Long): GigAddActions()
 }
