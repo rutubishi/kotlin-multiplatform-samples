@@ -40,7 +40,6 @@ fun AdminHome(
         mapOf("title" to "Gigs", "icon" to Icons.Filled.Work, "screen" to AdminScreen.GigScreen()),
         mapOf("title" to "Employers", "icon" to Icons.Filled.AccountCircle, "screen" to AdminScreen.EmployerScreen)
     )
-    var itemSelected: Int by remember { mutableStateOf(0) }
 
     Row(
         modifier = Modifier
@@ -72,8 +71,6 @@ fun AdminHome(
                             icon = icon,
                             selectedScreen = screen,
                             onSelectMenu = { adminScreen ->
-                                println("Screen: $adminScreen")
-                                itemSelected = index
                                 adminScreenModel.handleNavigation(
                                     actions = when(adminScreen){
                                         AdminScreen.EmployerScreen -> AdminNavigationActions.NavigateToEmployer
@@ -83,7 +80,7 @@ fun AdminHome(
                                     }
                                 )
                             },
-                            selected = itemSelected == index
+                            selected = screenUiState.currentScreen == screen
                         )
                     }
 

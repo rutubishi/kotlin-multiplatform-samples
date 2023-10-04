@@ -70,7 +70,7 @@ fun GigAddView(
                 value = "",
                 onValueChange = {},
                 placeholder = {
-                    Text(text = "Role Type")
+                    Text(text = "Role Type (full-time, part-time)")
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -119,6 +119,13 @@ fun GigAddView(
 
         }
 
+        DesktopInput(
+            value = "",
+            onValueChange = {},
+            placeholder = {
+                Text(text = "Contract Type (Permanent, Contract)")
+            }
+        )
 
 
         DesktopInput(
