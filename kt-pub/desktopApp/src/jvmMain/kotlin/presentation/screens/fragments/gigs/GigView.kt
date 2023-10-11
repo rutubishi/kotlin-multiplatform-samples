@@ -5,13 +5,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import data.network.KtPubAPI
+import data.repository.EmployerRepoImpl
 import data.repository.GigRepoImpl
 
 @Composable
 fun GigView(
     modifier: Modifier = Modifier,
     gigScreenModel: GigScreenModel = GigScreenModel(
-        gigRepository = GigRepoImpl(client = KtPubAPI.client)
+        gigRepository = GigRepoImpl(client = KtPubAPI.client),
+        employerRepository = EmployerRepoImpl(client = KtPubAPI.client)
     ),
     employerName: String? = null,
     employerId: Long = 0L

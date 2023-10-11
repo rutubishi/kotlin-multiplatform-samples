@@ -1,5 +1,6 @@
 package presentation.screens.fragments.gigs
 
+import data.repository.EmployerRepository
 import data.repository.GigRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +11,8 @@ import presentation.uimodel.ScreenModel
 import presentation.uimodel.ScreenState
 
 class GigScreenModel(
-    val gigRepository: GigRepository
+    val gigRepository: GigRepository,
+    val employerRepository: EmployerRepository
 ) : ScreenModel {
     override val asyncWorkScope: CoroutineScope
         get() = CoroutineScope(Dispatchers.IO)
@@ -59,7 +61,6 @@ class GigScreenModel(
             }
             is GigAddActions.SubmitGig -> {
                 uiState.update { it.copy(employerId = actions.employerId) }
-                println("ui: ${getCurrentUiState()}")
                 if(uiState.value.valid()){
                     //TODO: Make network call
                     submitGigForm()
@@ -83,6 +84,10 @@ class GigScreenModel(
             uiState.update { current }
             _addGigState.emit(ScreenState.Error(message = gig.status))
         }
+    }
+
+    private fun fetchEmployer(id: Long) = launchInIO {
+
     }
 
 }
