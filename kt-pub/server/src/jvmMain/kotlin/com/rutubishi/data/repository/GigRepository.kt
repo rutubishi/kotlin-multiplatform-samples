@@ -28,6 +28,7 @@ class GigRepoImpl(
     override suspend fun showLatestGigs(latest: Int): List<Gig> = gigDAO.showGigs(latest)
     override suspend fun addGig(gigRequest: GigRequest): Gig? {
         val employer = employerDAO.getEmployer(gigRequest.employerId)
+        println("======request ========= ${gigRequest.locType}, ${gigRequest.contractType}, ${gigRequest.roleType}")
         return if(employer == null)
             null
         else
@@ -38,7 +39,7 @@ class GigRepoImpl(
                     requirements = requirements,
                     location = location,
                     benefits = benefits,
-                    roleType = RoleType.FULL_TIME,
+                    roleType = RoleType.valueOf(roleType),
                     locType = LocType.valueOf(locType),
                     contractType = ContractType.valueOf(contractType),
                     datePosted = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),

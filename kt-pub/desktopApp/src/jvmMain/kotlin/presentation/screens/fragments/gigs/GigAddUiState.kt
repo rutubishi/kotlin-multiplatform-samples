@@ -1,6 +1,7 @@
 package presentation.screens.fragments.gigs
 
 import data.network.GigRequest
+import mappers.toEnumString
 
 
 private val roleTypes = listOf("full-time", "part-time")
@@ -37,9 +38,9 @@ data class GigAddUiState(
         requirements = roleRequirement!!,
         location = location!!,
         benefits = roleBenefits,
-        roleType = roleType!!.lowercase(),
-        locType = roleLocation!!,
-        contractType = contractType!!.lowercase(),
+        roleType = roleType!!.toEnumString(),
+        locType = roleLocation!!.toEnumString(),
+        contractType = contractType!!.toEnumString(),
         employerId = employerId,
         salaryRange = salaryRange!!
     )

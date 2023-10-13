@@ -16,6 +16,10 @@ class GigScreenModel(
     val gigRepository: GigRepository,
     val employerRepository: EmployerRepository
 ) : ScreenModel {
+
+    init {
+        loadGigs()
+    }
     override val asyncWorkScope: CoroutineScope
         get() = CoroutineScope(Dispatchers.IO)
 
@@ -24,6 +28,13 @@ class GigScreenModel(
 
     val uiState: MutableStateFlow<GigAddUiState> =
         MutableStateFlow(GigAddUiState())
+
+    val gigSearchUiState: MutableStateFlow<GigSearchUiState> =
+        MutableStateFlow(GigSearchUiState())
+
+    val gigListScreenState: MutableStateFlow<ScreenState<String>> =
+        MutableStateFlow(ScreenState.Loading())
+
 
     private val _addGigState: MutableStateFlow<ScreenState<String>> =
         MutableStateFlow(ScreenState.Idle(data = "No action needed"))
@@ -75,6 +86,22 @@ class GigScreenModel(
         }
     }
 
+    fun handleSearchActions(actions: GigSearchActions) = launchInIO {
+        when(actions){
+            is GigSearchActions.SearchChange -> {
+                gigSearchUiState.update {
+                    it.copy(searchTerm = actions.searchTerm)
+                }
+            }
+            GigSearchActions.SubmitSearch -> {
+                gigSearchUiState.update {
+                    loadGigs(searchTerm = it.searchTerm)
+                    it.copy(searchTerm = "")
+                }
+            }
+        }
+    }
+
     fun fetchEmployer(id: Long) = launchInUI {
         val employer = employerRepository.getEmployer(id)
         gigEmployer.emit(employer.body)
@@ -92,6 +119,18 @@ class GigScreenModel(
             uiState.update { current }
             _addGigState.emit(ScreenState.Error(message = gig.status))
         }
+    }
+
+    private fun loadGigs(searchTerm: String? = null) = launchInIO {
+//        gigListScreenState.emit(ScreenState.Loading(data = ""))
+        val gigs = if(searchTerm == null)
+            gigRepository.showGigs()
+        else
+            gigRepository.showGigs()
+        gigSearchUiState.update {
+            it.copy(searchResults = gigs.body)
+        }
+//        gigListScreenState.emit(ScreenState.Success(data = gigs.status))
     }
 
 }

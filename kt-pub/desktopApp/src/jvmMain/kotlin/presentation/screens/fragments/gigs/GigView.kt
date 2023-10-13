@@ -6,11 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import data.network.AppResponse
 import data.network.EmployerDto
 import data.network.KtPubAPI
 import data.repository.EmployerRepoImpl
 import data.repository.GigRepoImpl
+import presentation.uimodel.ScreenState
 
 @Composable
 fun GigView(
@@ -24,6 +24,8 @@ fun GigView(
 ) {
 
     val employerData: EmployerDto? by gigScreenModel.gigEmployer.collectAsState()
+    val gigSearchUiState: GigSearchUiState by gigScreenModel.gigSearchUiState.collectAsState()
+    val gigSearchScreenState: ScreenState<String> by gigScreenModel.gigListScreenState.collectAsState()
 
     Row(
         modifier = modifier
@@ -44,7 +46,9 @@ fun GigView(
 
         GigList(
             modifier = Modifier
-                .weight(1f)
+                .weight(1f),
+            gigSearchUiState = gigSearchUiState,
+            gigSearchScreenState = gigSearchScreenState
         )
     }
 }
