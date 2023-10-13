@@ -1,5 +1,7 @@
 package presentation.screens.fragments.gigs
 
+import data.network.AppResponse
+import data.network.EmployerDto
 import data.repository.EmployerRepository
 import data.repository.GigRepository
 import kotlinx.coroutines.CoroutineScope
@@ -26,6 +28,9 @@ class GigScreenModel(
     private val _addGigState: MutableStateFlow<ScreenState<String>> =
         MutableStateFlow(ScreenState.Idle(data = "No action needed"))
     val addGigState: StateFlow<ScreenState<String>> = _addGigState
+
+    val gigEmployer: MutableStateFlow<AppResponse<EmployerDto?>> =
+        MutableStateFlow(AppResponse(body = null))
 
 
 
@@ -86,8 +91,9 @@ class GigScreenModel(
         }
     }
 
-    private fun fetchEmployer(id: Long) = launchInIO {
-
+    fun fetchEmployer(id: Long) = launchInUI {
+        val employer = employerRepository.getEmployer(id)
+        gigEmployer.emit(employer)
     }
 
 }

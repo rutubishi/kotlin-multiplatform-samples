@@ -18,19 +18,26 @@ fun Application.employerRouter(
         post(AppRouter.createEmployer) {
             val employer = employerRepository
                 .addEmployer(call.receive<EmployerDto>().copy())
-            call.respond(status = HttpStatusCode.Created ,message = AppResponse(body = employer?.toDto()))
+            call.respond(
+                status = HttpStatusCode.Created,
+                message = AppResponse(
+                    code = HttpStatusCode.Created.value,
+                    body = employer?.toDto())
+            )
         }
 
         get(AppRouter.showEmployers) {
             call.respond(
-                AppResponse(
+                status = HttpStatusCode.OK,
+                message = AppResponse(
                     body = employerRepository.searchEmployer().map { it.toDto() })
             )
         }
 
         get(AppRouter.getEmployer){
             call.respond(
-                AppResponse(
+                status = HttpStatusCode.OK,
+                message = AppResponse(
                     body = employerRepository.getEmployer(call.parameters["id"]?.toLong()!!)
                 )
             )
