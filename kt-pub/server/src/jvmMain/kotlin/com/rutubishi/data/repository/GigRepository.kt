@@ -38,7 +38,7 @@ class GigRepoImpl(
                     requirements = requirements,
                     location = location,
                     benefits = benefits,
-                    roleType = RoleType.valueOf(roleType),
+                    roleType = RoleType.FULL_TIME,
                     locType = LocType.valueOf(locType),
                     contractType = ContractType.valueOf(contractType),
                     datePosted = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),

@@ -29,10 +29,8 @@ class GigScreenModel(
         MutableStateFlow(ScreenState.Idle(data = "No action needed"))
     val addGigState: StateFlow<ScreenState<String>> = _addGigState
 
-    val gigEmployer: MutableStateFlow<AppResponse<EmployerDto?>> =
-        MutableStateFlow(AppResponse(body = null))
-
-
+    val gigEmployer: MutableStateFlow<EmployerDto?> =
+        MutableStateFlow(null)
 
 
     fun handleGigAddActions(actions: GigAddActions){
@@ -70,11 +68,16 @@ class GigScreenModel(
                     //TODO: Make network call
                     submitGigForm()
                 }else{
-                    println("error when submitting")
+                    println("error when submitting === ${uiState.value}")
                     //TODO:Show error
                 }
             }
         }
+    }
+
+    fun fetchEmployer(id: Long) = launchInUI {
+        val employer = employerRepository.getEmployer(id)
+        gigEmployer.emit(employer.body)
     }
 
     private fun getCurrentUiState(): GigAddUiState = uiState.value
@@ -89,11 +92,6 @@ class GigScreenModel(
             uiState.update { current }
             _addGigState.emit(ScreenState.Error(message = gig.status))
         }
-    }
-
-    fun fetchEmployer(id: Long) = launchInUI {
-        val employer = employerRepository.getEmployer(id)
-        gigEmployer.emit(employer)
     }
 
 }

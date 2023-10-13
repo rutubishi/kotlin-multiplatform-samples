@@ -23,7 +23,7 @@ fun GigView(
     employerId: Long = 0L
 ) {
 
-    val employerData: AppResponse<EmployerDto?> by gigScreenModel.gigEmployer.collectAsState()
+    val employerData: EmployerDto? by gigScreenModel.gigEmployer.collectAsState()
 
     Row(
         modifier = modifier
@@ -37,8 +37,8 @@ fun GigView(
                 modifier = Modifier
                     .weight(1f),
                 screenModel = gigScreenModel,
-                employerId = employerData.body?.id ?: employerId,
-                employerName = employerData.body?.title ?: employerName
+                employerId = employerData?.id ?: employerId,
+                employerName = employerData?.title ?: employerName
             )
         }
 
