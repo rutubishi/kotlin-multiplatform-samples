@@ -46,6 +46,7 @@ fun GigView(
                 .weight(1f),
             gigSearchUiState = gigSearchUiState,
             gigSearchScreenState = gigSearchScreenState,
+            gigScreenModel = gigScreenModel,
             isWideScreen = employerId == 0L
         )
     }

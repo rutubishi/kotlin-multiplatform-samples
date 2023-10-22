@@ -13,8 +13,8 @@ import presentation.uimodel.ScreenModel
 import presentation.uimodel.ScreenState
 
 class GigScreenModel(
-    val gigRepository: GigRepository,
-    val employerRepository: EmployerRepository
+    private val gigRepository: GigRepository,
+    private val employerRepository: EmployerRepository
 ) : ScreenModel {
 
     init {

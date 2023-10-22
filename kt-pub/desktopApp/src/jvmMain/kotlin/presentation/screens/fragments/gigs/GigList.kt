@@ -1,5 +1,6 @@
 package presentation.screens.fragments.gigs
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -8,11 +9,16 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
@@ -32,8 +38,12 @@ fun GigList(
     modifier: Modifier = Modifier,
     gigSearchUiState: GigSearchUiState,
     gigSearchScreenState: ScreenState<String>,
+    gigScreenModel: GigScreenModel,
     isWideScreen: Boolean = false
 ) {
+
+    val addGigSearchUiState: GigAddUiState by gigScreenModel.uiState.collectAsState()
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -50,11 +60,20 @@ fun GigList(
             modifier = Modifier
                 .width(350.dp)
                 .padding(top = 20.dp),
-            value = "",
-            onValueChange = {},
+            value = gigSearchUiState.searchTerm,
+            onValueChange = { gigScreenModel.handleSearchActions(actions = GigSearchActions.SearchChange(it)) },
             shape = RoundedCornerShape(50.dp),
             placeholder = {
                 Text("Search")
+            },
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(standard_icon_size / 2)
+                        .clickable { gigScreenModel.handleSearchActions(actions = GigSearchActions.SubmitSearch) }
+                )
             }
         )
 
