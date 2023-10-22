@@ -22,7 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import presentation.screens.fragments.employers.EmployerScreenModel
 import presentation.screens.fragments.employers.EmployerView
+import presentation.screens.fragments.gigs.GigScreenModel
 import presentation.screens.fragments.gigs.GigView
 import presentation.screens.fragments.home.HomeView
 import presentation.theme.general_padding
@@ -32,7 +34,9 @@ import presentation.theme.standard_icon_size
 @Composable
 fun AdminHome(
     closeRequest: () -> Unit = {},
-    adminScreenModel: AdminScreenModel = AdminScreenModel()
+    adminScreenModel: AdminScreenModel,
+    employerScreenModel: EmployerScreenModel,
+    gigScreenModel: GigScreenModel
 ) {
     val screenUiState: AdminUiState by adminScreenModel.currentPage.collectAsState()
     val menuOptions = arrayOf(
@@ -102,8 +106,14 @@ fun AdminHome(
         // screens
         when(screenUiState.currentScreen){
             is AdminScreen.HomeScreen -> HomeView()
-            is AdminScreen.EmployerScreen -> EmployerView(adminScreenModel = adminScreenModel)
-            is AdminScreen.GigScreen -> GigView(employerId = (screenUiState.currentScreen as AdminScreen.GigScreen).employerId)
+            is AdminScreen.EmployerScreen -> EmployerView(
+                adminScreenModel = adminScreenModel,
+                employerScreenModel = employerScreenModel
+            )
+            is AdminScreen.GigScreen -> GigView(
+                employerId = (screenUiState.currentScreen as AdminScreen.GigScreen).employerId,
+                gigScreenModel = gigScreenModel
+            )
         }
 
     }

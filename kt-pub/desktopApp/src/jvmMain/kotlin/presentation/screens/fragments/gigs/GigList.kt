@@ -1,7 +1,11 @@
 package presentation.screens.fragments.gigs
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -28,6 +32,7 @@ fun GigList(
     modifier: Modifier = Modifier,
     gigSearchUiState: GigSearchUiState,
     gigSearchScreenState: ScreenState<String>,
+    isWideScreen: Boolean = false
 ) {
     Column(
         modifier = modifier
@@ -63,12 +68,31 @@ fun GigList(
                         .align(Alignment.Center)
                 )
             }else {
-                LazyRow(
-                    modifier = Modifier.fillMaxHeight()
-                        .padding(vertical = general_padding)
-                ) {
-                    items(gigSearchUiState.searchResults) {
-                        GigSearchResult(it)
+
+                if(isWideScreen){
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(3),
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentPadding = PaddingValues(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ){
+                        items(gigSearchUiState.searchResults){
+                            GigSearchResult(it)
+                        }
+                    }
+                }else{
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(vertical = general_padding, horizontal = half_padding),
+                        contentPadding = PaddingValues(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        items(gigSearchUiState.searchResults) {
+                            GigSearchResult(it)
+                        }
                     }
                 }
             }
@@ -84,11 +108,13 @@ fun GigSearchResult(
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .height(standard_icon_size + (standard_icon_size / 2))
+            .height(standard_icon_size * 2)
     ) {
 
         Row(
-            modifier = Modifier.padding(vertical = 4.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(vertical = 4.dp)
         ) {
             DesktopImage(
                 painter = rememberImagePainter(gigResponse.employerLogo),
@@ -97,9 +123,11 @@ fun GigSearchResult(
             )
 
             Column(
-                modifier = Modifier.fillMaxHeight().padding(start = 16.dp, end = 8.dp),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(start = 16.dp, end = 8.dp),
                 horizontalAlignment = Alignment.Start,
-                verticalArrangement = Arrangement.spacedBy(4.dp)
+                verticalArrangement = Arrangement.SpaceAround
             ) {
 
                 Text(text = gigResponse.title, style = MaterialTheme.typography.bodyLarge)

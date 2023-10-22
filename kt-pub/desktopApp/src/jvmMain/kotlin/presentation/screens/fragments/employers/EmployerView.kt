@@ -12,9 +12,7 @@ import presentation.screens.AdminScreenModel
 @Composable
 fun EmployerView(
     modifier: Modifier = Modifier,
-    employerScreenModel: EmployerScreenModel = EmployerScreenModel(
-        employerRepository = EmployerRepoImpl(client = KtPubAPI.client)
-    ),
+    employerScreenModel: EmployerScreenModel,
     adminScreenModel: AdminScreenModel
 ) {
 
@@ -31,7 +29,7 @@ fun EmployerView(
             modifier = Modifier
                 .weight(1f),
             viewModel = employerScreenModel,
-            adminScreenModel
+            adminScreenModel = adminScreenModel
         )
     }
 

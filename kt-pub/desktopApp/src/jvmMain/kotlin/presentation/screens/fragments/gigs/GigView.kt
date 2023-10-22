@@ -14,11 +14,8 @@ import presentation.uimodel.ScreenState
 
 @Composable
 fun GigView(
+    gigScreenModel: GigScreenModel,
     modifier: Modifier = Modifier,
-    gigScreenModel: GigScreenModel = GigScreenModel(
-        gigRepository = GigRepoImpl(client = KtPubAPI.client),
-        employerRepository = EmployerRepoImpl(client = KtPubAPI.client)
-    ),
     employerName: String? = null,
     employerId: Long = 0L
 ) {
@@ -48,7 +45,8 @@ fun GigView(
             modifier = Modifier
                 .weight(1f),
             gigSearchUiState = gigSearchUiState,
-            gigSearchScreenState = gigSearchScreenState
+            gigSearchScreenState = gigSearchScreenState,
+            isWideScreen = employerId == 0L
         )
     }
 }
