@@ -10,6 +10,7 @@ import presentation.screens.AdminHome
 import presentation.screens.AdminScreenModel
 import presentation.screens.fragments.employers.EmployerScreenModel
 import presentation.screens.fragments.gigs.GigScreenModel
+import presentation.theme.KtPubTheme
 import kotlin.system.exitProcess
 
 fun main() = application {
@@ -34,12 +35,14 @@ fun main() = application {
             )
         )
     ) {
-        AdminHome(
-            closeRequest = {
-                exitProcess(0)
-            },
-            adminScreenModel = screenModel,
-            employerScreenModel, gigScreenModel
-        )
+        KtPubTheme {
+            AdminHome(
+                closeRequest = {
+                    exitProcess(0)
+                },
+                adminScreenModel = screenModel,
+                employerScreenModel, gigScreenModel
+            )
+        }
     }
 }

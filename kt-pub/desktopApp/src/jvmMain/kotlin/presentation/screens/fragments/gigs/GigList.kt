@@ -14,6 +14,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
@@ -28,11 +29,13 @@ import com.seiko.imageloader.rememberImagePainter
 import data.network.GigResponse
 import presentation.components.AppLoader
 import presentation.components.DesktopImage
+import presentation.components.JobTile
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 import presentation.theme.standard_icon_size
 import presentation.uimodel.ScreenState
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GigList(
     modifier: Modifier = Modifier,
@@ -98,7 +101,16 @@ fun GigList(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ){
                         items(gigSearchUiState.searchResults){
-                            GigSearchResult(it)
+                            JobTile(
+                                jobData = it,
+                                employerLogo = {
+                                    DesktopImage(
+                                        modifier = Modifier.size(standard_icon_size),
+                                        painter = rememberImagePainter(it.employerLogo),
+                                        contentDescription = it.description
+                                    )
+                                }
+                            )
                         }
                     }
                 }else{
@@ -110,7 +122,16 @@ fun GigList(
                         verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         items(gigSearchUiState.searchResults) {
-                            GigSearchResult(it)
+                            JobTile(
+                                jobData = it,
+                                employerLogo = {
+                                    DesktopImage(
+                                        modifier = Modifier.size(standard_icon_size),
+                                        painter = rememberImagePainter(it.employerLogo),
+                                        contentDescription = it.description,
+                                    )
+                                }
+                            )
                         }
                     }
                 }

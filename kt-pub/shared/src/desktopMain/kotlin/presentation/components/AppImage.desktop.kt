@@ -6,6 +6,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
 import com.seiko.imageloader.component.setupDefaultComponents
@@ -73,13 +74,15 @@ actual fun AppImage(painter: Painter) {
 fun DesktopImage(
     modifier: Modifier = Modifier,
     painter: Painter,
-    contentDescription: String? = null
+    contentDescription: String? = null,
+    contentScale: ContentScale = ContentScale.Crop
 ) {
     CompositionLocalProvider( LocalImageLoader provides remember { appImageLoader() }){
         Image(
             modifier = modifier,
             painter = painter,
-            contentDescription = contentDescription
+            contentDescription = contentDescription,
+            contentScale = contentScale
         )
     }
 }
