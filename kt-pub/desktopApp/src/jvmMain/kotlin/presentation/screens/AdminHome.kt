@@ -9,10 +9,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,77 +42,81 @@ fun AdminHome(
         mapOf("title" to "Employers", "icon" to Icons.Filled.AccountCircle, "screen" to AdminScreen.EmployerScreen)
     )
 
-    Row(
-        modifier = Modifier
-            .fillMaxSize(),
+    Surface(
+        modifier = Modifier.fillMaxSize()
     ) {
-        NavigationRail(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
+        Row(
             modifier = Modifier
-                .fillMaxHeight()
-                .width(125.dp),
-            ){
-
-            Column(
+                .fillMaxSize(),
+        ) {
+            NavigationRail(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
                 modifier = Modifier
                     .fillMaxHeight()
-                    .padding(vertical = 20.dp),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Column {
+                    .width(125.dp),
+            ){
 
-                    menuOptions.forEachIndexed { _, map ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(vertical = 20.dp),
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column {
 
-                        val icon: ImageVector by map
-                        val title: String by map
-                        val screen: AdminScreen by map
+                        menuOptions.forEachIndexed { _, map ->
 
-                        NavItem(
-                            title = title,
-                            icon = icon,
-                            selectedScreen = screen,
-                            onSelectMenu = { adminScreen ->
-                                adminScreenModel.handleNavigation(
-                                    actions = when(adminScreen){
-                                        AdminScreen.EmployerScreen -> AdminNavigationActions.NavigateToEmployer
-                                        is AdminScreen.GigScreen -> AdminNavigationActions.NavigateToGig(0L)
-                                        AdminScreen.HomeScreen -> AdminNavigationActions.NavigateToHome
-                                        null -> AdminNavigationActions.NavigateToHome
-                                    }
-                                )
-                            },
-                            selected = screenUiState.currentScreen == screen
-                        )
+                            val icon: ImageVector by map
+                            val title: String by map
+                            val screen: AdminScreen by map
+
+                            NavItem(
+                                title = title,
+                                icon = icon,
+                                selectedScreen = screen,
+                                onSelectMenu = { adminScreen ->
+                                    adminScreenModel.handleNavigation(
+                                        actions = when(adminScreen){
+                                            AdminScreen.EmployerScreen -> AdminNavigationActions.NavigateToEmployer
+                                            is AdminScreen.GigScreen -> AdminNavigationActions.NavigateToGig(0L)
+                                            AdminScreen.HomeScreen -> AdminNavigationActions.NavigateToHome
+                                            null -> AdminNavigationActions.NavigateToHome
+                                        }
+                                    )
+                                },
+                                selected = screenUiState.currentScreen == screen
+                            )
+                        }
+
                     }
+
+                    NavItem(
+                        title = "Log Out",
+                        icon = Icons.Filled.Logout,
+                        onSelectMenu = {
+                            closeRequest()
+                        }
+                    )
 
                 }
 
-                NavItem(
-                    title = "Log Out",
-                    icon = Icons.Filled.Logout,
-                    onSelectMenu = {
-                        closeRequest()
-                    }
-                )
 
             }
 
+            // screens
+            when(screenUiState.currentScreen){
+                is AdminScreen.HomeScreen -> HomeView()
+                is AdminScreen.EmployerScreen -> EmployerView(
+                    adminScreenModel = adminScreenModel,
+                    employerScreenModel = employerScreenModel
+                )
+                is AdminScreen.GigScreen -> GigView(
+                    employerId = (screenUiState.currentScreen as AdminScreen.GigScreen).employerId,
+                    gigScreenModel = gigScreenModel
+                )
+            }
 
         }
-
-        // screens
-        when(screenUiState.currentScreen){
-            is AdminScreen.HomeScreen -> HomeView()
-            is AdminScreen.EmployerScreen -> EmployerView(
-                adminScreenModel = adminScreenModel,
-                employerScreenModel = employerScreenModel
-            )
-            is AdminScreen.GigScreen -> GigView(
-                employerId = (screenUiState.currentScreen as AdminScreen.GigScreen).employerId,
-                gigScreenModel = gigScreenModel
-            )
-        }
-
     }
 
 

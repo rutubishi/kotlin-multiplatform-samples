@@ -121,7 +121,7 @@ class GigScreenModel(
         }
     }
 
-    private fun loadGigs(searchTerm: String? = null) = launchInIO {
+    fun loadGigs(searchTerm: String? = null) = launchInIO {
 //        gigListScreenState.emit(ScreenState.Loading(data = ""))
         val gigs = if(searchTerm == null)
             gigRepository.showGigs()

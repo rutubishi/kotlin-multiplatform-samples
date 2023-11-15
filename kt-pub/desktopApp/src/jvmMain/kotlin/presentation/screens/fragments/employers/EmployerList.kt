@@ -57,7 +57,8 @@ fun EmployerList(
         Text(
             text = "Employers",
             style = MaterialTheme.typography.titleLarge,
-            fontSize = TextUnit(value = 20f, TextUnitType.Sp)
+            fontSize = TextUnit(value = 20f, TextUnitType.Sp),
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         OutlinedTextField(
@@ -70,10 +71,11 @@ fun EmployerList(
             },
             shape = RoundedCornerShape(50.dp),
             placeholder = {
-                Text("Search")
+                Text("Search", color = MaterialTheme.colorScheme.onSurface)
             },
             trailingIcon = {
                 Icon(
+                    tint = MaterialTheme.colorScheme.onSurface,
                     imageVector = Icons.Default.ScreenSearchDesktop,
                     contentDescription = null,
                     modifier = Modifier
@@ -162,12 +164,14 @@ fun EmployerSearchResult(
 
                 Text(
                     text = employer.title,
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
                     text = employer.industry,
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = MaterialTheme.colorScheme.onSurface
                 )
 
             }

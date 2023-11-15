@@ -81,7 +81,8 @@ fun EmployerAddViewContent(
         Text(
             text = "Add Employer",
             style = MaterialTheme.typography.titleLarge,
-            fontSize = TextUnit(value = 20f, TextUnitType.Sp)
+            fontSize = TextUnit(value = 20f, TextUnitType.Sp),
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         if (showError) AppErrorCard(message = error ?: "Something wrong happened")
@@ -90,7 +91,10 @@ fun EmployerAddViewContent(
             value = uiState.companyName ?: "",
             onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.CompanyNameChange(it)) },
             placeholder = {
-                Text(text = "Company Name")
+                Text(
+                    text = "Company Name",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         )
 
@@ -98,7 +102,10 @@ fun EmployerAddViewContent(
             value = uiState.logo ?: "",
             onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.LogoChange(it)) },
             placeholder = {
-                Text(text = "Logo URL")
+                Text(
+                    text = "Logo URL",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         )
 
@@ -108,7 +115,10 @@ fun EmployerAddViewContent(
                 viewModel.handleEmployerAddActions(actions = EmployerAddActions.WebPageChange(it))
             },
             placeholder = {
-                Text(text = "Webpage")
+                Text(
+                    text = "Webpage",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         )
 
@@ -116,7 +126,10 @@ fun EmployerAddViewContent(
             value = uiState.industry ?: "",
             onValueChange = { viewModel.handleEmployerAddActions(actions = EmployerAddActions.IndustryChange(it)) },
             placeholder = {
-                Text(text = "Industry (Education, Hospitality etc.)")
+                Text(
+                    text = "Industry (Education, Hospitality etc.)",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         )
 
@@ -124,7 +137,10 @@ fun EmployerAddViewContent(
             value = uiState.companySize ?: "",
             onValueChange = { viewModel.handleEmployerAddActions(EmployerAddActions.CompanySizeChange(it)) },
             placeholder = {
-                Text(text = "Company Size")
+                Text(
+                    text = "Company Size",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             },
             trailingIcon = {
                 Icon(
@@ -151,7 +167,10 @@ fun EmployerAddViewContent(
             value = uiState.description ?: "",
             onValueChange = { viewModel.handleEmployerAddActions(EmployerAddActions.DescriptionChange(it)) },
             placeholder = {
-                Text(text = "Employer Details")
+                Text(
+                    text = "Employer Details",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             },
             minLines = 6
         )

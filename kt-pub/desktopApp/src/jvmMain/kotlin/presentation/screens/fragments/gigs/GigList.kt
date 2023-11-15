@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,32 +54,57 @@ fun GigList(
             .padding(vertical = general_padding, horizontal = half_padding),
     ) {
 
-        Text(
-            text = "Gigs",
-            style = MaterialTheme.typography.titleLarge,
-            fontSize = TextUnit(value = 20f, TextUnitType.Sp)
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
 
-        OutlinedTextField(
-            modifier = Modifier
-                .width(350.dp)
-                .padding(top = 20.dp),
-            value = gigSearchUiState.searchTerm,
-            onValueChange = { gigScreenModel.handleSearchActions(actions = GigSearchActions.SearchChange(it)) },
-            shape = RoundedCornerShape(50.dp),
-            placeholder = {
-                Text("Search")
-            },
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = null,
+            Column {
+                Text(
+                    text = "Gigs",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontSize = TextUnit(value = 20f, TextUnitType.Sp),
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+
+                OutlinedTextField(
                     modifier = Modifier
-                        .size(standard_icon_size / 2)
-                        .clickable { gigScreenModel.handleSearchActions(actions = GigSearchActions.SubmitSearch) }
+                        .width(350.dp)
+                        .padding(top = 20.dp),
+                    value = gigSearchUiState.searchTerm,
+                    onValueChange = { gigScreenModel.handleSearchActions(actions = GigSearchActions.SearchChange(it)) },
+                    shape = RoundedCornerShape(50.dp),
+                    placeholder = {
+                        Text(
+                            "Search",
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    },
+                    trailingIcon = {
+                        Icon(
+                            tint = MaterialTheme.colorScheme.onSurface,
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(standard_icon_size / 2)
+                                .clickable { gigScreenModel.handleSearchActions(actions = GigSearchActions.SubmitSearch) }
+                        )
+                    }
                 )
             }
-        )
+
+            Icon(
+                tint = MaterialTheme.colorScheme.onSurface,
+                imageVector = Icons.Default.Refresh,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(standard_icon_size)
+                    .clickable { gigScreenModel.loadGigs() }
+            )
+
+        }
+
+
 
 
         Box(modifier = Modifier

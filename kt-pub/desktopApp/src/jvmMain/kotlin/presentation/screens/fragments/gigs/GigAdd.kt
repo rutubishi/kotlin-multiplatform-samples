@@ -38,7 +38,8 @@ fun GigAddView(
         Text(
             text = "Add Gig",
             style = MaterialTheme.typography.titleLarge,
-            fontSize = TextUnit(value = 20f, TextUnitType.Sp)
+            fontSize = TextUnit(value = 20f, TextUnitType.Sp),
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         Row(
@@ -51,7 +52,7 @@ fun GigAddView(
                     screenModel.handleGigAddActions(GigAddActions.TitleChange(it))
                 },
                 placeholder = {
-                    Text(text = "Role Name")
+                    Text(text = "Role Name", color = MaterialTheme.colorScheme.onSurface)
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -62,7 +63,10 @@ fun GigAddView(
                 value = employerName ?: "",
                 onValueChange = {},
                 placeholder = {
-                    Text(text = "Employer")
+                    Text(
+                        text = "Employer",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -82,7 +86,10 @@ fun GigAddView(
                     screenModel.handleGigAddActions(GigAddActions.RoleTypeChange(it))
                 },
                 placeholder = {
-                    Text(text = "Role Type (full-time, part-time)")
+                    Text(
+                        text = "Role Type (full-time, part-time)",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -95,7 +102,10 @@ fun GigAddView(
                     screenModel.handleGigAddActions(GigAddActions.LocTypeChange(it))
                 },
                 placeholder = {
-                    Text(text = "Role Location (Hybrid, Remote, On-Site)")
+                    Text(
+                        text = "Role Location (Hybrid, Remote, On-Site)",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -115,7 +125,10 @@ fun GigAddView(
                     screenModel.handleGigAddActions(GigAddActions.SalaryRangeChange(it))
                 },
                 placeholder = {
-                    Text(text = "Salary Range")
+                    Text(
+                        text = "Salary Range",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -128,7 +141,10 @@ fun GigAddView(
                     screenModel.handleGigAddActions(GigAddActions.LocationChange(it))
                 },
                 placeholder = {
-                    Text(text = "Location")
+                    Text(
+                        text = "Location",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 },
                 modifier = Modifier
                     .weight(1f)
@@ -143,7 +159,10 @@ fun GigAddView(
                 screenModel.handleGigAddActions(GigAddActions.ContractTypeChange(it))
             },
             placeholder = {
-                Text(text = "Contract Type (Permanent, Contract)")
+                Text(
+                    text = "Contract Type (Permanent, Contract)",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         )
 
@@ -154,7 +173,10 @@ fun GigAddView(
                 screenModel.handleGigAddActions(GigAddActions.DescriptionChange(it))
             },
             placeholder = {
-                Text(text = "Role Description")
+                Text(
+                    text = "Role Description",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             },
             minLines = 4
         )
@@ -165,7 +187,10 @@ fun GigAddView(
                 screenModel.handleGigAddActions(GigAddActions.RequirementChange(it))
             },
             placeholder = {
-                Text(text = "Role Requirements")
+                Text(
+                    text = "Role Requirements",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             },
             minLines = 4
         )
@@ -176,7 +201,10 @@ fun GigAddView(
                 screenModel.handleGigAddActions(GigAddActions.BenefitsChange(it))
             },
             placeholder = {
-                Text(text = "Benefits / Perks")
+                Text(
+                    text = "Benefits / Perks",
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             },
             minLines = 4
         )
