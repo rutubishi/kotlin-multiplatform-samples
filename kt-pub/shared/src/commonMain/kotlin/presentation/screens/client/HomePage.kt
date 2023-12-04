@@ -12,6 +12,9 @@ import androidx.compose.material.icons.filled.DesktopMac
 import androidx.compose.material.icons.filled.Newspaper
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -145,9 +148,12 @@ fun JobStatsSection() {
 @Composable
 @ExperimentalMaterial3Api
 fun JobsRecentSection(
+    homePageUiState: HomePageUiState,
     isWideScreen: Boolean = false,
     modifier: Modifier = Modifier
 ) {
+
+
 
     Column(
         modifier = modifier
@@ -167,8 +173,8 @@ fun JobsRecentSection(
                 .spacedBy(half_padding)
         ) {
 
-            items((1..3).toList()) {
-                JobTile()
+            items(homePageUiState.latestGigs) {
+                JobTile(jobData = it)
             }
 
         }
@@ -245,9 +251,17 @@ fun KotlinNewsBanner(
 @Composable
 @ExperimentalMaterial3Api
 fun HomePage(
+    homePageSM: HomePageSM? = null,
     isWideScreen: Boolean = false,
     modifier: Modifier = Modifier
 ) {
+
+    var homePageUiState = HomePageUiState()
+    homePageUiState = homePageSM?.screenDataState?.collectAsState()?.value ?: homePageUiState
+
+    LaunchedEffect(key1 = null){
+        homePageSM?.handleActions(HomePageActions.LoadLatestGigs)
+    }
 
     Column(
         modifier = modifier
@@ -257,7 +271,7 @@ fun HomePage(
             title = "The K2 compiler is now ready!"
         )
         JobStatsSection()
-        JobsRecentSection()
+        JobsRecentSection(homePageUiState)
     }
 
 }

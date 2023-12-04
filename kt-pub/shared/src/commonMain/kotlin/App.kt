@@ -14,12 +14,15 @@ import presentation.components.AppHeader
 import presentation.components.BottomNavBar
 import presentation.screens.client.HomeAppBar
 import presentation.screens.client.HomePage
+import presentation.screens.client.HomePageSM
 import presentation.theme.KtPubTheme
 import presentation.theme.half_padding
 
 @Composable
 @ExperimentalMaterial3Api
-fun App() {
+fun App(
+    homePageSM: HomePageSM? = null
+) {
     KtPubTheme {
         Scaffold(
             topBar = {
@@ -35,6 +38,7 @@ fun App() {
         ) { padding ->
 
             HomePage(
+                homePageSM = homePageSM,
                 modifier = Modifier
                     .padding(padding)
             )

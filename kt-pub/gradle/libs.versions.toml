@@ -23,6 +23,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image-loader" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-logging-jvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
 ktor-serialization-kotlinx-json-jvm = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
 ktor-server-auth-jvm = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }

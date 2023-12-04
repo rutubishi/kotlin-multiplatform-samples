@@ -62,6 +62,9 @@ kotlin {
                 api(libs.core.ktx)
                 api(libs.ktor.client.okhttp)
                 implementation(libs.coil.compose)
+                implementation(libs.ktor.client.android)
+                implementation(libs.ktor.client.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json.jvm)
         }
         }
         val iosX64Main by getting
