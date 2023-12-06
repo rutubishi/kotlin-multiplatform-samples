@@ -1,17 +1,16 @@
 package data.network.repositories
 
-import data.network.AppResponse
-import data.network.ApplicationApi
-import data.network.GigResponse
+import data.network.*
+import kotlinx.coroutines.flow.Flow
 
 interface GigsRepository {
-    suspend fun fetchLatestGigs(): AppResponse<List<GigResponse>>
+    suspend fun getLatestGigs(): Flow<AppResource<AppResponse<List<GigResponse>>>>
 }
 
 class GigsRepoImpl(
-    private val api: ApplicationApi = ApplicationApi
-): GigsRepository {
-    override suspend fun fetchLatestGigs(): AppResponse<List<GigResponse>> {
-        return api.getLatestJobs()
-    }
+    private val apiService: ApiService = ApiService()
+): GigsRepository, BaseRepository() {
+
+    override suspend fun getLatestGigs(): Flow<AppResource<AppResponse<List<GigResponse>>>> =
+        apiService.get<List<GigResponse>>(AppRouter.showGigsLatest)
 }

@@ -1,11 +1,14 @@
 package presentation.screens.client
 
+import androidx.compose.runtime.collectAsState
+import data.network.AppResource
+import data.network.AppResponse
 import data.network.GigResponse
 import data.network.repositories.GigsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import presentation.uimodel.ScreenModel
 
 abstract class HomePageSM(
@@ -22,8 +25,12 @@ abstract class HomePageSM(
 
     
     open val screenDataState: MutableStateFlow<HomePageUiState> = MutableStateFlow(HomePageUiState())
-    
-    open fun handleActions(actions: HomePageActions){
+
+    init {
+        handleActions(HomePageActions.LoadLatestGigs)
+    }
+
+    fun handleActions(actions: HomePageActions){
         when(actions){
             is HomePageActions.LoadLatestGigs -> {
                 loadLatestGigs()
@@ -35,17 +42,17 @@ abstract class HomePageSM(
     }
     
     private fun loadLatestGigs() = launchInIO {
-        val gigs = gigsRepository.fetchLatestGigs()
-        println("Launched Effect here $gigs")
-        screenDataState.update { 
-            it.copy(latestGigs = gigs.body)
+        gigsRepository.getLatestGigs().collect {
+            screenDataState.update { homePageUiState ->
+                homePageUiState.copy(latestGigsState = it)
+            }
         }
     }
     
 }
 
 data class HomePageUiState(
-    val latestGigs: List<GigResponse> = emptyList()
+    val latestGigsState: AppResource<AppResponse<List<GigResponse>>> = AppResource.Loading()
 )
 
 sealed class HomePageActions {

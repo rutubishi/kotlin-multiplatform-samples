@@ -11,10 +11,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.DesktopMac
 import androidx.compose.material.icons.filled.Newspaper
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -24,10 +21,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import presentation.components.AppHeader
-import presentation.components.AppNavBar
-import presentation.components.JobSummary
-import presentation.components.JobTile
+import data.network.AppResource
+import presentation.components.*
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 import presentation.theme.med_text_size
@@ -153,8 +148,6 @@ fun JobsRecentSection(
     modifier: Modifier = Modifier
 ) {
 
-
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -165,19 +158,31 @@ fun JobsRecentSection(
             header = "Recently listed jobs"
         )
 
-        LazyRow(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(vertical = half_padding),
-            horizontalArrangement = Arrangement
-                .spacedBy(half_padding)
-        ) {
-
-            items(homePageUiState.latestGigs) {
-                JobTile(jobData = it)
+        when(homePageUiState.latestGigsState){
+            is AppResource.Error -> {
+                Text("There was an error")
             }
+            is AppResource.Loading -> {
+                AppLoader(modifier = Modifier.fillMaxWidth())
+            }
+            is AppResource.Success -> {
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(vertical = half_padding),
+                    horizontalArrangement = Arrangement
+                        .spacedBy(half_padding)
+                ) {
 
+                    items(homePageUiState.latestGigsState.res?.body?.body ?: emptyList()) {
+                        JobTile(jobData = it)
+                    }
+
+                }
+            }
         }
+
+
 
     }
 
@@ -251,17 +256,12 @@ fun KotlinNewsBanner(
 @Composable
 @ExperimentalMaterial3Api
 fun HomePage(
-    homePageSM: HomePageSM? = null,
+    homePageSM: HomePageSM,
     isWideScreen: Boolean = false,
     modifier: Modifier = Modifier
 ) {
 
-    var homePageUiState = HomePageUiState()
-    homePageUiState = homePageSM?.screenDataState?.collectAsState()?.value ?: homePageUiState
-
-    LaunchedEffect(key1 = null){
-        homePageSM?.handleActions(HomePageActions.LoadLatestGigs)
-    }
+    val homePageUiState: HomePageUiState by homePageSM.screenDataState.collectAsState()
 
     Column(
         modifier = modifier

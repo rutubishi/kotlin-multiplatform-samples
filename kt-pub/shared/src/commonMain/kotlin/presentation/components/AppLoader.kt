@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import presentation.theme.half_padding
 import presentation.theme.standard_icon_size
@@ -24,7 +25,7 @@ import presentation.theme.standard_icon_size
 @Composable
 fun AppLoader(
     modifier: Modifier = Modifier,
-    animationDelay: Int = 1000,
+    animationDelay: Int = 1250,
     message: String = "Please wait ..."
 ) {
 
@@ -65,7 +66,8 @@ fun AppLoader(
             text = message,
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
-                .padding(half_padding))
+                .padding(half_padding),
+            textAlign = TextAlign.Center)
     }
 
 

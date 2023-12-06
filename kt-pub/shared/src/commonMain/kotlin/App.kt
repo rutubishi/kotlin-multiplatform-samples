@@ -21,7 +21,7 @@ import presentation.theme.half_padding
 @Composable
 @ExperimentalMaterial3Api
 fun App(
-    homePageSM: HomePageSM? = null
+    homePageSM: HomePageSM
 ) {
     KtPubTheme {
         Scaffold(

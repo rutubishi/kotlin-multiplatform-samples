@@ -45,6 +45,8 @@ kotlin {
                 api(compose.components.resources)
                 api(libs.kotlinx.serialization.json)
                 api(libs.image.loader)
+                api(libs.ktor.client.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json)
 
             }
         }

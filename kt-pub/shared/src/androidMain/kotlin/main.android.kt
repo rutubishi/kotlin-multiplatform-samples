@@ -7,7 +7,7 @@ actual fun getPlatformName(): String = "Android"
 @Composable
 @ExperimentalMaterial3Api
 fun MainView(
-    homePageSM: HomePageSM? = null,
+    homePageSM: HomePageSM,
 ) = App(
     homePageSM = homePageSM
 )
