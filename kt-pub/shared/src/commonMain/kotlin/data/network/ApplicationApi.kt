@@ -31,7 +31,7 @@ val client = HttpClient {
 
 
 // API service setup
-class ApiService {
+object ApiService {
     suspend inline fun <reified T> get(url: String) = makeRequest<T>(url, HttpMethod.Get)
     suspend inline fun <reified T> post(url: String) = makeRequest<T>(url, HttpMethod.Post)
     suspend inline fun <reified T> put(url: String) = makeRequest<T>(url, HttpMethod.Put)

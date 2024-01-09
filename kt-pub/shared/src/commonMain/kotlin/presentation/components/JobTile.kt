@@ -34,8 +34,8 @@ fun JobTile(
     modifier: Modifier = Modifier,
     jobData: GigResponse? = null,
     employerLogo: @Composable () -> Unit = {
-        Icon(
-            imageVector = Icons.Filled.Games,
+        KtPubImage(
+            model = jobData?.employerLogo ?: "",
             contentDescription = null,
             modifier = Modifier
                 .size(standard_icon_size / 2)

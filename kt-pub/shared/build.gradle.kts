@@ -47,6 +47,7 @@ kotlin {
                 api(libs.image.loader)
                 api(libs.ktor.client.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.kamel.image)
 
             }
         }

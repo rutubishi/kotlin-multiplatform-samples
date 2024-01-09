@@ -85,7 +85,7 @@ class EmployerScreenModel(
         }
     }
 
-    fun handleSearchActions(actions: EmployerSearchActions) = launchInIO {
+    fun handleSearchActions(actions: EmployerSearchActions) = launchInIO <Unit>{
         when(actions){
             is EmployerSearchActions.SearchChange -> {
                 searchUiState.update {
@@ -125,8 +125,9 @@ class EmployerScreenModel(
             employerRepository.showEmployers()
         else
             employerRepository.showEmployers()
+
         searchUiState.update {
-            it.copy(searchResults = employers.body)
+            it.copy(searchResults = employers.body?: emptyList())
         }
         _searchState.emit(value = ScreenState.Success(data = "Data Loaded"))
     }

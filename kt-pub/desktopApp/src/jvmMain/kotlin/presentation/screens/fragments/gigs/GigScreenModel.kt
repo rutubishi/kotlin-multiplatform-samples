@@ -128,7 +128,7 @@ class GigScreenModel(
         else
             gigRepository.showGigs()
         gigSearchUiState.update {
-            it.copy(searchResults = gigs.body)
+            it.copy(searchResults = gigs.body ?: emptyList())
         }
 //        gigListScreenState.emit(ScreenState.Success(data = gigs.status))
     }
