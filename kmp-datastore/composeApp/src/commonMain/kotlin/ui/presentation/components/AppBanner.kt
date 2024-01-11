@@ -19,7 +19,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppBanner(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isSmallBanner: Boolean = false
 ) {
 
     Row(
@@ -31,14 +32,14 @@ fun AppBanner(
             imageVector = Icons.Sharp.ShoppingCart,
             contentDescription = null,
             modifier = Modifier
-                .size(128.dp)
-                .padding(horizontal = 16.dp)
+                .size(if(isSmallBanner) 48.dp else 128.dp)
+                .padding(horizontal = if(isSmallBanner) 4.dp else 16.dp)
         )
         Text(
             "Welcome to your shopping list",
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.headlineLarge,
+            style = if(isSmallBanner) MaterialTheme.typography.titleMedium else MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
     }

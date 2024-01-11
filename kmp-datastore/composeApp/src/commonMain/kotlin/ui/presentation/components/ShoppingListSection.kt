@@ -26,7 +26,10 @@ fun ShoppingListSection(
         // show banner on small screen
         if(showBanner){
             AppBanner(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                isSmallBanner = true
             )
         }
 

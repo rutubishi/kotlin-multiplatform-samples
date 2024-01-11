@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,56 +31,64 @@ fun App(
 ) {
     AppTheme {
 
-        if(isWideScreen){
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(128.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(32.dp)
-            ) {
+        Surface {
 
-                Column(
-                    modifier = Modifier.weight(1f)
+            if (isWideScreen) {
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(128.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(32.dp)
                 ) {
 
-                    AppBanner(
+                    Column(
+                        modifier = Modifier.weight(1f)
+                    ) {
+
+                        AppBanner(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        )
+
+                        InputShoppingItem(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        )
+                    }
+
+                    ShoppingListSection(
+                        modifier = Modifier.weight(1f),
+                        showBanner = false
+                    )
+
+                }
+            } else {
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+
+                    ShoppingListSection(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
+                        showBanner = true
                     )
 
                     InputShoppingItem(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                            .padding(top = 8.dp)
+                            .align(Alignment.BottomCenter)
                     )
+
                 }
 
-                ShoppingListSection(
-                    modifier = Modifier.weight(1f),
-                    showBanner = false
-                )
-
             }
-        } else {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 32.dp)
-            ) {
-
-                ShoppingListSection(
-                    showBanner = true
-                )
-
-                InputShoppingItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
-                )
-
-            }
-
         }
 
     }
