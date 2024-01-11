@@ -47,43 +47,41 @@ fun KtPubImage(
     modifier: Modifier = Modifier
 ) {
 
-    CompositionLocalProvider(LocalKamelConfig provides ktPubKamelConfig){
-        val painterResource: Resource<Painter> = asyncPainterResource(
-            data = model
-        ){
-            coroutineContext = Job() + coroutineDispatcher
-        }
+    println("model $model")
 
-        KamelImage(
-            resource = painterResource,
-            contentDescription = contentDescription,
-            modifier = modifier,
-            alignment = alignment ?: Alignment.Center,
-            contentScale = contentScale ?: ContentScale.Crop,
-            onLoading = { progress ->
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .fillMaxWidth()
-                        .padding(2.dp),
-                    progress = progress
-                )
-            },
-            onFailure = {
-                Text(
-                    text = "Error!!",
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.labelSmall
-                )
-            },
-            animationSpec = tween(
-                durationMillis = 1000,
-                easing = LinearEasing
-            )
-        )
-
+    val painterResource: Resource<Painter> = asyncPainterResource(
+        data = model
+    ){
+        coroutineContext = Job() + coroutineDispatcher
     }
 
+    KamelImage(
+        resource = painterResource,
+        contentDescription = contentDescription,
+        modifier = modifier,
+        alignment = alignment ?: Alignment.Center,
+        contentScale = contentScale ?: ContentScale.Crop,
+        onLoading = { progress ->
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .fillMaxWidth()
+                    .padding(2.dp),
+                progress = progress
+            )
+        },
+        onFailure = {
+            Text(
+                text = "Error!!",
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.labelSmall
+            )
+        },
+        animationSpec = tween(
+            durationMillis = 1000,
+            easing = LinearEasing
+        )
+    )
 
 
 }

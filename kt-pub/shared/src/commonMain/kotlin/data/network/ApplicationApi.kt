@@ -61,6 +61,3 @@ object ApiService {
 
 
 }
-
-
-expect fun appClient(): HttpClient

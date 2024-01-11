@@ -24,6 +24,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.network.GigResponse
+import kotlinx.coroutines.Dispatchers
 import presentation.theme.general_padding
 import presentation.theme.half_padding
 import presentation.theme.standard_icon_size
@@ -36,7 +37,8 @@ fun JobTile(
     employerLogo: @Composable () -> Unit = {
         KtPubImage(
             model = jobData?.employerLogo ?: "",
-            contentDescription = null,
+            contentDescription = jobData?.employer,
+            coroutineDispatcher = Dispatchers.Default,
             modifier = Modifier
                 .size(standard_icon_size / 2)
         )
