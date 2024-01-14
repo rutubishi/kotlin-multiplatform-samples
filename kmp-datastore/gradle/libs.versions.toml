@@ -13,12 +13,15 @@ androidx-test-junit = "1.1.5"
 compose = "1.5.4"
 compose-compiler = "1.5.6"
 compose-plugin = "1.6.0-alpha01"
-datastorePreferencesCore = "1.0.0"
+datastorePreferencesCore = "1.1.0-beta01"
 junit = "4.13.2"
 kotlin = "1.9.21"
+kotlinxCoroutinesCore = "1.8.0-RC2"
+sqljsDriver = "2.0.1"
 
 [libraries]
-androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "datastorePreferencesCore" }
+android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqljsDriver" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-core-okio", version.ref = "datastorePreferencesCore" }
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastorePreferencesCore" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -35,6 +38,10 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "compose" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqljsDriver" }
+sqljs-driver = { module = "app.cash.sqldelight:sqljs-driver", version.ref = "sqljsDriver" }
+web-worker-driver = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqljsDriver" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

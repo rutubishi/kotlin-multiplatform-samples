@@ -1,16 +1,9 @@
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-
-    }
-
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -22,9 +15,9 @@ kotlin {
     jvm("desktop")
 
     sourceSets {
-
         commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines.core)
+            api(libs.androidx.datastore.preferences.core)
+            api(libs.androidx.datastore.core)
         }
     }
 }
@@ -42,4 +35,3 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
 }
-

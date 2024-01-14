@@ -3,13 +3,19 @@ package ui.presentation
 import Greeting
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.sharp.Clear
+import androidx.compose.material.icons.sharp.DarkMode
+import androidx.compose.material.icons.sharp.LightMode
+import androidx.compose.material.icons.sharp.ShieldMoon
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,9 +33,15 @@ import ui.theme.AppTheme
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App(
-    isWideScreen: Boolean = true
+    isWideScreen: Boolean = true,
 ) {
-    AppTheme {
+
+    val systemDark = isSystemInDarkTheme()
+    var isDark: Boolean by remember { mutableStateOf(systemDark) }
+
+    AppTheme(
+        useDarkTheme = isDark
+    ) {
 
         Surface {
 
@@ -60,7 +72,9 @@ fun App(
 
                     ShoppingListSection(
                         modifier = Modifier.weight(1f),
-                        showBanner = false
+                        showBanner = false,
+                        changeTheme = { isDark = !isDark  },
+                        isDark = isDark
                     )
 
                 }
@@ -75,7 +89,9 @@ fun App(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp),
-                        showBanner = true
+                        showBanner = true,
+                        changeTheme = { isDark = !isDark  },
+                        isDark = isDark
                     )
 
                     InputShoppingItem(
