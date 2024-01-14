@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.rutubishi.kmpdatastore.core_datastore";
+option java_multiple_files = true;
+
+message GroceryItem {
+  int32 id = 1;
+  string itemCount = 2;
+  string item = 3;
+  bool isChecked = 4;
+  string updated = 5;
+}

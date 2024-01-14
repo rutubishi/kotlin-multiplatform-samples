@@ -1,6 +1,6 @@
 package com.rutubishi.kmpdatastore.core_datastore.theme
 
-import DataStoreAppComponent.coreComponent
+import coreComponent
 import com.rutubishi.kmpdatastore.core_definitions.data.ThemeDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
