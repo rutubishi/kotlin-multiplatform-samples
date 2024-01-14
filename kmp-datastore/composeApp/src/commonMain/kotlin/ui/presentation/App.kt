@@ -34,13 +34,18 @@ import ui.theme.AppTheme
 @Composable
 fun App(
     isWideScreen: Boolean = true,
+    viewModel: AppViewModel,
 ) {
 
-    val systemDark = isSystemInDarkTheme()
-    var isDark: Boolean by remember { mutableStateOf(systemDark) }
+    val appUiState: AppUiState by viewModel.appUiState.collectAsState()
+
+    // check for ui theme mode
+    LaunchedEffect(true){
+        viewModel.handleUiActions(AppActions.LaunchApp)
+    }
 
     AppTheme(
-        useDarkTheme = isDark
+        useDarkTheme = appUiState.isDarkTheme
     ) {
 
         Surface {
@@ -73,8 +78,10 @@ fun App(
                     ShoppingListSection(
                         modifier = Modifier.weight(1f),
                         showBanner = false,
-                        changeTheme = { isDark = !isDark  },
-                        isDark = isDark
+                        changeTheme = {
+                            println("Current theme is dark: ${appUiState.isDarkTheme}")
+                            viewModel.handleUiActions(AppActions.SwitchUiTheme(!appUiState.isDarkTheme)) },
+                        isDark = appUiState.isDarkTheme
                     )
 
                 }
@@ -90,8 +97,8 @@ fun App(
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp),
                         showBanner = true,
-                        changeTheme = { isDark = !isDark  },
-                        isDark = isDark
+                        changeTheme = { viewModel.handleUiActions(AppActions.SwitchUiTheme(!appUiState.isDarkTheme)) },
+                        isDark = appUiState.isDarkTheme
                     )
 
                     InputShoppingItem(

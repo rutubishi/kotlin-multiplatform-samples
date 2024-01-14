@@ -1,5 +1,8 @@
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.rutubishi.kmpdatastore.core_datastore.app.dataStorePreferences
+import com.rutubishi.kmpdatastore.core_datastore.theme.ThemePreference
+import com.rutubishi.kmpdatastore.core_datastore.theme.ThemePreferenceImpl
 import kotlinx.coroutines.*
 
 interface CoroutinesComponent {

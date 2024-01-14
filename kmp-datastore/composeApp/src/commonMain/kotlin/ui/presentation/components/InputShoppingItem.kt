@@ -36,7 +36,7 @@ fun InputShoppingItem(
         )
 
         FloatingActionButton(
-            onClick = { AppViewModel() },
+            onClick = {  },
             modifier = Modifier
                 .padding(4.dp),
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,

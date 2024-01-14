@@ -8,7 +8,13 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
     }
 
     androidTarget {
@@ -23,9 +29,20 @@ kotlin {
 
     sourceSets {
 
+        val desktopMain by getting
+        val wasmJsMain by getting
+
         commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines.core)
+            api(project(":core-definitions"))
         }
+        androidMain.dependencies {
+            api(project(":core-datastore"))
+        }
+
+        desktopMain.dependencies {
+            api(project(":core-datastore"))
+        }
+
     }
 }
 
@@ -39,7 +56,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
 }
 

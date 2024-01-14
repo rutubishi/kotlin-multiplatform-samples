@@ -1,9 +1,22 @@
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
 }
 
 kotlin {
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
+    }
+
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -16,11 +29,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":core-definitions"))
-            api(libs.androidx.datastore.preferences.core)
-            api(libs.androidx.datastore.core)
+            api(libs.kotlinx.coroutines.core)
         }
     }
+
 }
 
 android {

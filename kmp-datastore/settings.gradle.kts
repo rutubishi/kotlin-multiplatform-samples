@@ -18,6 +18,8 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
-include(":core-data")
+
+include(":core-definitions")
 include(":core-datastore")
+include(":core-data")
+include(":composeApp")

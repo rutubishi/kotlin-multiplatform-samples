@@ -36,7 +36,6 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(project(":core-datastore"))
         }
         commonMain.dependencies {
             implementation(project(":core-data"))
@@ -50,7 +49,6 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(project(":core-datastore"))
         }
     }
 }
