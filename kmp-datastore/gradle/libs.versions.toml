@@ -17,6 +17,7 @@ datastorePreferencesCore = "1.1.0-beta01"
 junit = "4.13.2"
 kotlin = "1.9.21"
 kotlinxCoroutinesCore = "1.8.0-RC2"
+protobufJavalite = "3.25.2"
 protobufKotlin = "3.25.2"
 sqljsDriver = "2.0.1"
 
@@ -40,6 +41,7 @@ compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview"
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material3:material3", version.ref = "compose" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobufKotlin" }
 sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqljsDriver" }
 sqljs-driver = { module = "app.cash.sqldelight:sqljs-driver", version.ref = "sqljsDriver" }

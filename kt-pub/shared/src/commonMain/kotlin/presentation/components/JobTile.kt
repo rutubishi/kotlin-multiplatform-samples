@@ -40,7 +40,7 @@ fun JobTile(
             contentDescription = jobData?.employer,
             coroutineDispatcher = Dispatchers.Default,
             modifier = Modifier
-                .size(standard_icon_size / 2)
+                .size(standard_icon_size)
         )
     }
 ) {
@@ -60,14 +60,12 @@ fun JobTile(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .height(100.dp)
+                    .height(standard_icon_size)
                     .fillMaxWidth()
-                    .padding(vertical = general_padding, horizontal = half_padding)
             ) {
 
                 Row(
                     modifier = Modifier
-                        .weight(4f)
                         .fillMaxHeight(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -97,11 +95,11 @@ fun JobTile(
                     }
                 }
 
+
                 Icon(
                     imageVector = Icons.Outlined.BookmarkAdd,
                     contentDescription = null,
                     modifier = Modifier
-                        .weight(2f)
                         .padding(start = standard_icon_size)
                         .size(standard_icon_size / 3)
                 )
@@ -109,7 +107,7 @@ fun JobTile(
             }
 
             Text(
-                modifier = Modifier.padding(horizontal = half_padding),
+                modifier = Modifier.padding(top = half_padding),
                 text = buildAnnotatedString {
                     withStyle(SpanStyle(
                         fontWeight = FontWeight.SemiBold,

@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-option java_package = "com.rutubishi.kmpdatastore.core_datastore";
+option java_package = "com.rutubishi.kmpdatastore.core_datastore.proto";
 option java_multiple_files = true;
 
-message GroceryItem {
+message GroceryItemz {
   int32 id = 1;
   string itemCount = 2;
   string item = 3;

@@ -8,13 +8,9 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
         browser {
-            commonWebpackConfig {
-                outputFileName = "composeApp.js"
-            }
+
         }
-        binaries.executable()
     }
 
     androidTarget {
@@ -47,7 +43,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.rutubishi.kmpdatastore"
+    namespace = "com.rutubishi.kmpdatastore.core_data"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

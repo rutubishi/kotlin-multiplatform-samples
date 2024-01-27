@@ -26,7 +26,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.rutubishi.kmpdatastore"
+    namespace = "com.rutubishi.kmpdatastore.core_datastore"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -35,7 +35,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
 }
 
@@ -43,12 +42,13 @@ protobuf {
     // Configures the Protobuf compilation and the protoc executable
     protoc {
         // Downloads from the repositories
-        artifact = "com.google.protobuf:protoc:3.14.0"
+        artifact = "com.google.protobuf:protoc:21.7"
     }
 
     generateProtoTasks {
-        all().forEach {task ->
+        all().forEach { task ->
             task.builtins {
+
             }
         }
     }

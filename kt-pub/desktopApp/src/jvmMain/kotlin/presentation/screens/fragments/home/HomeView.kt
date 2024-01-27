@@ -15,6 +15,7 @@ fun HomeView(
     modifier: Modifier = Modifier
         .fillMaxSize()
 ) {
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
