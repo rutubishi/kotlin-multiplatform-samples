@@ -98,12 +98,15 @@ fun JobStatsSection(
                 Text("There was an error")
             }
             is AppResource.Loading -> {
-                Text("Loading")
+                AppLoader(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(standard_icon_size * 2)
+                )
             }
             is AppResource.Success -> {
 
                 val jobStatsData = jobStats.res?.body?.body
-                println("jobsData: $jobStatsData")
 
                 Row(
                     modifier = Modifier
@@ -184,7 +187,11 @@ fun JobsRecentSection(
                 Text("There was an error")
             }
             is AppResource.Loading -> {
-                AppLoader(modifier = Modifier.fillMaxWidth())
+                AppLoader(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(standard_icon_size * 2)
+                )
             }
             is AppResource.Success -> {
                 LazyRow(
