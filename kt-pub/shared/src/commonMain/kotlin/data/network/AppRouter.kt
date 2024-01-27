@@ -8,6 +8,7 @@ object AppRouter {
     val getGig = "/gig/{id}"
     val showGigsLatest = "/gig/latest"
     val showAllGigs = "/gig/all"
+    val aggregateGigs = "/gig/aggregate"
 
     /**
     * Employer Routes

@@ -9,6 +9,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.koin.ktor.ext.get
 
 fun Application.gigRouter(
     gigRepository: GigRepository
@@ -41,6 +42,11 @@ fun Application.gigRouter(
                         .map { it.toDto() }
                 )
             )
+        }
+
+        get(AppRouter.aggregateGigs){
+            val aggregated = gigRepository.aggregateGigs()
+            call.respond(AppResponse(body = aggregated))
         }
 
     }

@@ -57,7 +57,12 @@ fun HomeAppBar(
 
 
 @Composable
-fun JobStatsSection() {
+fun JobStatsSection(
+    homePageUiState: HomePageUiState
+) {
+
+    val jobStats = homePageUiState.gigSummary
+
     Column(
         modifier = Modifier
             .padding(top = half_padding)
@@ -88,52 +93,68 @@ fun JobStatsSection() {
         /**
          * Job stats cards
          * */
-        Row(
-            modifier = Modifier
-                .height(200.dp)
-                .fillMaxWidth()
-        ) {
-            JobSummary(
-                backgroundColor = MaterialTheme.colorScheme.primary,
-                jobCount = "44.3k",
-                jobType = "Remote Jobs",
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(end = half_padding / 2)
-                    .weight(1f)
-            ){
-                Icon(
-                    modifier = Modifier.size(standard_icon_size / 2),
-                    imageVector = Icons.Filled.DesktopMac,
-                    contentDescription = null
-                )
+        when(jobStats){
+            is AppResource.Error -> {
+                Text("There was an error")
             }
-            Column(modifier = Modifier
-                .fillMaxHeight()
-                .weight(1f)
-                .padding(start = half_padding / 2)
-            ) {
+            is AppResource.Loading -> {
+                Text("Loading")
+            }
+            is AppResource.Success -> {
 
-                JobSummary(
-                    backgroundColor = MaterialTheme.colorScheme.secondary,
-                    jobCount = "44.3k",
-                    jobType = "Hybrid Jobs",
+                val jobStatsData = jobStats.res?.body?.body
+                println("jobsData: $jobStatsData")
+
+                Row(
                     modifier = Modifier
-                        .padding(bottom = half_padding / 2)
-                        .weight(1f)
-                )
+                        .height(200.dp)
+                        .fillMaxWidth()
+                ) {
 
-                JobSummary(
-                    backgroundColor = MaterialTheme.colorScheme.tertiary,
-                    jobCount = "44.3k",
-                    jobType = "On-Site Jobs",
-                    modifier = Modifier
-                        .padding(top = half_padding / 2)
+                    JobSummary(
+                        backgroundColor = MaterialTheme.colorScheme.primary,
+                        jobCount = jobStatsData?.get("REMOTE")?.toString() ?: "0",
+                        jobType = "Remote Jobs",
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(end = half_padding / 2)
+                            .weight(1f)
+                    ){
+                        Icon(
+                            modifier = Modifier.size(standard_icon_size / 2),
+                            imageVector = Icons.Filled.DesktopMac,
+                            contentDescription = null
+                        )
+                    }
+                    Column(modifier = Modifier
+                        .fillMaxHeight()
                         .weight(1f)
-                )
+                        .padding(start = half_padding / 2)
+                    ) {
 
+                        JobSummary(
+                            backgroundColor = MaterialTheme.colorScheme.secondary,
+                            jobCount = jobStatsData?.get("HYBRID")?.toString() ?: "0",
+                            jobType = "Hybrid Jobs",
+                            modifier = Modifier
+                                .padding(bottom = half_padding / 2)
+                                .weight(1f)
+                        )
+
+                        JobSummary(
+                            backgroundColor = MaterialTheme.colorScheme.tertiary,
+                            jobCount = jobStatsData?.get("ON_SITE")?.toString() ?: "0",
+                            jobType = "On-Site Jobs",
+                            modifier = Modifier
+                                .padding(top = half_padding / 2)
+                                .weight(1f)
+                        )
+
+                    }
+                }
             }
         }
+
         /**
          * Job stats cards --end
          * */
@@ -270,7 +291,7 @@ fun HomePage(
         KotlinNewsBanner(
             title = "The K2 compiler is now ready!"
         )
-        JobStatsSection()
+        JobStatsSection(homePageUiState)
         JobsRecentSection(homePageUiState)
     }
 

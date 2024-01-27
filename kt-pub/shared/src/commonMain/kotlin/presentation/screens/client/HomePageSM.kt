@@ -28,12 +28,16 @@ abstract class HomePageSM(
 
     init {
         handleActions(HomePageActions.LoadLatestGigs)
+        handleActions(HomePageActions.LoadGigSummary)
     }
 
     fun handleActions(actions: HomePageActions){
         when(actions){
             is HomePageActions.LoadLatestGigs -> {
                 loadLatestGigs()
+            }
+            is HomePageActions.LoadGigSummary -> {
+                loadGigSummary()
             }
             else -> {
                 
@@ -48,14 +52,24 @@ abstract class HomePageSM(
             }
         }
     }
+
+    private fun loadGigSummary() = launchInIO {
+        gigsRepository.getGigStats().collect {
+            screenDataState.update { homePageUiState ->
+                homePageUiState.copy(gigSummary = it)
+            }
+        }
+    }
     
 }
 
 data class HomePageUiState(
-    val latestGigsState: AppResource<AppResponse<List<GigResponse>>> = AppResource.Loading()
+    val latestGigsState: AppResource<AppResponse<List<GigResponse>>> = AppResource.Loading(),
+    val gigSummary: AppResource<AppResponse<Map<String, Long>>> = AppResource.Loading()
 )
 
 sealed class HomePageActions {
     data object LoadLatestGigs: HomePageActions()
+    data object LoadGigSummary: HomePageActions()
 }
 

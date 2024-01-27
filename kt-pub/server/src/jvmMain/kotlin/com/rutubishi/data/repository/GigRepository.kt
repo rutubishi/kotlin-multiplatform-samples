@@ -13,6 +13,7 @@ interface GigRepository {
     suspend fun searchGig(searchTerm: String): List<Gig>
     suspend fun addGig(gigRequest: GigRequest): Gig?
     suspend fun showLatestGigs(latest: Int = 5): List<Gig>
+    suspend fun aggregateGigs(): Map<String, Long>
 }
 
 class GigRepoImpl(
@@ -28,7 +29,6 @@ class GigRepoImpl(
     override suspend fun showLatestGigs(latest: Int): List<Gig> = gigDAO.showGigs(latest)
     override suspend fun addGig(gigRequest: GigRequest): Gig? {
         val employer = employerDAO.getEmployer(gigRequest.employerId)
-        println("======request ========= ${gigRequest.locType}, ${gigRequest.contractType}, ${gigRequest.roleType}")
         return if(employer == null)
             null
         else
@@ -50,4 +50,12 @@ class GigRepoImpl(
             }
     }
 
+    override suspend fun aggregateGigs(): Map<String, Long> {
+        val gigs = gigDAO
+            .showGigs()
+            .groupBy { gig -> gig.locType }
+            .mapKeys { entry -> entry.key.name }
+            .mapValues { entry -> entry.value.size.toLong() }
+        return gigs
+    }
 }
